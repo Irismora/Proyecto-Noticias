@@ -46,7 +46,6 @@ const loginUser = async (req, res, next) => {
         const tokenInfo = {
             id: username[0].id,
         };
-
         // Creamos el token
         const token = jwt.sign(tokenInfo, process.env.SECRET, {
             expiresIn: '10d',

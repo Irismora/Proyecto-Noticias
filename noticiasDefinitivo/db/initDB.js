@@ -1,15 +1,21 @@
 const getDB = require("./getDB");
 require("dotenv").config();
+
+//comando para ejecutar initDB.js e inicializar Database
+//node db/initDB.js
 async function main() {
   // Creamos una variable para guardar la conexión
   let connection;
 
+
+
   try {
     // Abrimos la conexion a la bbdd
     connection = await getDB();
+    const { DB_DATABASE } = process.env;
 
     //Creamos la base de datos web si no existe
-    await connection.query("CREATE DATABASE IF NOT EXISTS news;");
+    await connection.query(`CREATE DATABASE IF NOT EXISTS ${DB_DATABASE}`);
     console.log('Database "news" created.');
 
     //selecciona la base de datos web
