@@ -68,30 +68,6 @@ async function main() {
     );
 
     console.log("Tables created.");
-
-    console.log("Insertando unos datos de prueba...");
-
-    await connection.query(
-      `INSERT INTO user (username, email, password)
-            VALUES ('user1', 'correo@gmail.com', 'abc')`
-    );
-
-    await connection.query(
-      `INSERT INTO news (title, summery, newsText, topic,idUser)
-            VALUES ('Noticia1', "resumen"," texto de la noticia ", 'farandula', 1)`
-    );
-
-    await connection.query(
-      `INSERT INTO user_like_news (id,idUser,idNews)
-            VALUES (1,1,1)`
-    );
-
-    await connection.query(
-      `INSERT INTO user_unlike_news (id,idUser,idNews)
-            VALUES (1,1,1)`
-    );
-
-    console.log("¡Datos de prueba insertados con éxito!");
   } catch (e) {
     console.error("Hubo un error al inicializar la DB: " + e.message);
   } finally {
@@ -99,6 +75,7 @@ async function main() {
       console.log("liberando conexión");
       connection.release();
     }
+    process.exit(); // proceso de salida
   }
 }
 
