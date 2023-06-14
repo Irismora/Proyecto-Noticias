@@ -1,47 +1,60 @@
-const getDB = require('../../db/getDB');
-const { deletePhoto, validateSchema } = require('../../helpers');
-const idNewsSchema = require('../../schemas/idNewsSchema');
+const getDB = require("../../db/getDB");
+const { generateError, validateSchema } = require("../../helpers");
+const idNewsSchema = require("../../schemas/idNewsSchema");
 
 const deleteNews = async (req, res, next) => {
-    let connection;
-    try {
-        connection = await getDB();
+  let connection;
+  try {
+    connection = await getDB();
 
-        // Validamos los datos que recuperamos en el cuerpo de la petición con el schema de idNewsSchema
-        validateSchema(idNewsSchema, req.params);
+    // Validamos los datos que recuperamos en el cuerpo de la petición con el schema de idNewsSchema
+    validateSchema(idNewsSchema, req.params);
 
-        // Destructuramos el id de la noticia
-        const { idNews } = req.params;
+    // Destructuramos el id de la noticia
+    const { idNews } = req.params;
 
-        // Primero comprobamos que e la noticia tiene fotos
-        const [[entries]] = await connection.query(
-            `
+    // Verificamos si la noticia existe
+    const [[existingNews]] = await connection.query(
+      `
+        SELECT id FROM news WHERE id = ?
+        `,
+      [idNews]
+    );
+
+    if (!existingNews) {
+      throw generateError("La noticia que intentas eliminar no existe", 404);
+    }
+
+    // Primero comprobamos si la noticia tiene fotos
+    const [[news]] = await connection.query(
+      `
         SELECT photo FROM news WHERE id = ?
         `,
-            [idNews]
-        );
+      [idNews]
+    );
 
-        if (!entries) {
-            // Ejecutamos la función deletePhoto para eliminar cada una de las fotos de la noticia
-            await deletePhoto(entries.photo);
-        }
+    if (news && news.photo) {
+      // Eliminamos la foto de la noticia
+      await deletePhoto(news.photo);
+    }
 
-        // Eliminamos las fotos de la noticia en la base de datos
-        await connection.query(
-            `
+    // Eliminamos la noticia de la base de datos
+    await connection.query(
+      `
         DELETE FROM news WHERE id = ?
         `,
-            [idNews]
-        );
+      [idNews]
+    );
 
-        res.send({
-            status: 'ok',
-            message: 'Noticia eliminada con éxito',
-        });
-    } catch (error) {
-        next(error);
-    } finally {
-        if (connection) connection.release();
-    }
+    res.send({
+      status: "ok",
+      message: "Noticia eliminada con éxito",
+    });
+  } catch (error) {
+    next(error);
+  } finally {
+    if (connection) connection.release();
+  }
 };
+
 module.exports = deleteNews;
