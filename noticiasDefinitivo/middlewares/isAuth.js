@@ -1,7 +1,3 @@
-/* 
-    Middleware que comprobará si el usuario ha iniciado sesión o no
-*/
-
 const getDB = require("../db/getDB");
 const { generateError, validateSchema } = require("../helpers");
 const authSchema = require("../schemas/AuthSchema");
@@ -22,10 +18,11 @@ const isAuth = async (req, res, next) => {
 
     console.log(authorization);
 
-    // Si no existe la cabecera de autorizacion
+    // Si no existe la cabecera de autorizacion HE TOCADO ESTOOOO???
     if (!authorization) {
-      //throw generateError('¡Falta la cabecera de autorización!', 401); // Unauthorized
       return next();
+      /*    throw generateError("¡Falta la cabecera de autorización!", 401); */
+      // Unauthorized
     }
 
     // Variable que va a guardar la info del token
@@ -55,6 +52,7 @@ const isAuth = async (req, res, next) => {
     // Si todo va bien, pasamos la pelota
     next();
   } catch (error) {
+    console.log("Error al verificar el token:", error.message);
     next(error);
   } finally {
     if (connection) connection.release();
