@@ -29,7 +29,7 @@ const loginUser = async (req, res, next) => {
 
     // Si hay algun usuario con el email, podemos obtener su contraseña
     if (username.length > 0) {
-      validPassword = await bcrypt.compare(password, username[0].password);
+        validPassword = await bcrypt.compare(password, username[0].password);
     }
 
     // Si la contraseña no es válida o el email no es válido
@@ -41,7 +41,9 @@ const loginUser = async (req, res, next) => {
 
     // Objeto con información útil del usuario que guardaremos en el token
     const tokenInfo = {
-      id: username[0].id,
+        id: username[0].id,
+        username: username[0].username,
+        email: username[0].email
     };
 
     // Creamos el token
