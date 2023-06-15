@@ -9,11 +9,11 @@ async function main() {
     connection = await getDB();
 
     //Creamos la base de datos web si no existe
-    await connection.query("CREATE DATABASE IF NOT EXISTS news;");
+    await connection.query("CREATE DATABASE IF NOT EXISTS news");
     console.log('Database "news" created.');
 
     //selecciona la base de datos web
-    await connection.query("USE news;");
+    await connection.query("USE news");
 
     await connection.query(`DROP TABLE IF EXISTS user_unlike_news`);
     await connection.query(`DROP TABLE IF EXISTS user_like_news`);
@@ -43,7 +43,8 @@ async function main() {
                 idUser INT UNSIGNED NOT NULL,
                 FOREIGN KEY (idUser) REFERENCES user(id)
                 ON DELETE CASCADE
-
+                
+                
             )`
     );
 
