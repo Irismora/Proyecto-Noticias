@@ -15,11 +15,7 @@ async function main() {
     const { DB_DATABASE } = process.env;
 
     //Creamos la base de datos web si no existe
-<<<<<<< HEAD
     await connection.query("CREATE DATABASE IF NOT EXISTS news");
-=======
-    await connection.query(`CREATE DATABASE IF NOT EXISTS ${DB_DATABASE}`);
->>>>>>> 024963ee76d7b052e8391ba743fedc6fd3e56303
     console.log('Database "news" created.');
 
     //selecciona la base de datos web
