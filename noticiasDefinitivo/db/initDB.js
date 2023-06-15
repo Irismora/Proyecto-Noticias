@@ -1,4 +1,4 @@
-gitconst getDB = require("./getDB");
+const getDB = require("./getDB");
 require("dotenv").config();
 
 //comando para ejecutar initDB.js e inicializar Database
