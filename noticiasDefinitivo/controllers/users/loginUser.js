@@ -42,8 +42,6 @@ const loginUser = async (req, res, next) => {
     // Objeto con información útil del usuario que guardaremos en el token
     const tokenInfo = {
       id: username[0].id,
-      username: username[0].username,
-      email: username[0].email
     };
 
     // Creamos el token
