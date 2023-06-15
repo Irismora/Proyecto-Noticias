@@ -27,44 +27,9 @@ const loginUser = async (req, res, next) => {
     // Comprobamos que la contraseña recibida es la correcta
     let validPassword;
 
-        // Si hay algun usuario con el email, podemos obtener su contraseña
-        if (username.length > 0) {
-            validPassword = await bcrypt.compare(
-                password,
-                username[0].password
-            );
-        }
-
-        // Si la contraseña no es válida o el email no es válido
-        if (username.length < 1 || !validPassword) {
-            throw generateError('Email o contraseña incorrectos.', 401); // Unauthorized
-        }
-
-        ///// Generamos el token
-
-        // Objeto con información útil del usuario que guardaremos en el token
-        const tokenInfo = {
-            id: username[0].id,
-            username: username[0].username,
-            email: username[0].email
-        };
-        // Creamos el token
-        const token = jwt.sign(tokenInfo, process.env.SECRET, {
-            expiresIn: '10d',
-        });
-        // Si ha ido todo bien hasta aqui, respondemos con el token generado
-        res.send({
-            status: 'Ok',
-            message: '¡Sesión iniciada con éxito!',
-            authToken: token,
-            token: tokenInfo,
-        });
-    } catch (error) {
-        // En caso de que ocurra algun error lo pasamos
-        next(error);
-    } finally {
-        // Finalmente, cerramos la conexion con la bbdd
-        if (connection) connection.release();
+    // Si hay algun usuario con el email, podemos obtener su contraseña
+    if (username.length > 0) {
+        validPassword = await bcrypt.compare(password, username[0].password);
     }
 
     // Si la contraseña no es válida o el email no es válido
@@ -76,7 +41,9 @@ const loginUser = async (req, res, next) => {
 
     // Objeto con información útil del usuario que guardaremos en el token
     const tokenInfo = {
-      id: username[0].id,
+        id: username[0].id,
+        username: username[0].username,
+        email: username[0].email
     };
 
     // Creamos el token
