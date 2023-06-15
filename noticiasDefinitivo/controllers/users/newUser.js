@@ -60,8 +60,6 @@ const newUser = async (req, res, next) => {
         // Usamos la dependencia bcrypt para encriptar la contraseña
         const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-        // Generamos el codigo de registro aleatorio para el usuario
-        const registrationCode = generateRandomCode(40);
 
         // Guardamos el nuevo usuario
         await connection.query(
