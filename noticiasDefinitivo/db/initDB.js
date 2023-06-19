@@ -19,7 +19,7 @@ async function main() {
     console.log('Database "news" created.');
 
     //selecciona la base de datos web
-    await connection.query("USE news;");
+    await connection.query("USE news");
 
     await connection.query(`DROP TABLE IF EXISTS user_unlike_news`);
     await connection.query(`DROP TABLE IF EXISTS user_like_news`);
@@ -48,7 +48,8 @@ async function main() {
                 idUser INT UNSIGNED NOT NULL,
                 FOREIGN KEY (idUser) REFERENCES user(id)
                 ON DELETE CASCADE
-
+                
+                
             )`
     );
 
