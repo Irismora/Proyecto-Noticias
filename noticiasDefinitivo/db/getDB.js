@@ -30,7 +30,6 @@ const getDB = async () => {
     console.error(error.message);
   }
 };
-console.log(getDB);
 
 // Exportamos la funcion getDB
 module.exports = getDB;

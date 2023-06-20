@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "8a28a834-4481-4f35-8782-c9f1860f6402",
+		"_postman_id": "ab84361b-f4b7-447a-aa15-184548c1596e",
 		"name": "Noticias-Colaborativas",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "26979288"
@@ -206,68 +206,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "GET User Name",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjgzODgzNjE5LCJleHAiOjE2ODQ3NDc2MTl9.PA472jcpYTv8dcAxMKNisF5sIw7zE2p0nOIQih4ALPE",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{token}}",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{server}}/user/username",
-							"host": [
-								"{{server}}"
-							],
-							"path": [
-								"user",
-								"username"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get User id",
-					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjgzODgzNjE5LCJleHAiOjE2ODQ3NDc2MTl9.PA472jcpYTv8dcAxMKNisF5sIw7zE2p0nOIQih4ALPE",
-									"type": "string"
-								}
-							]
-						},
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{server}}/user/id",
-							"host": [
-								"{{server}}"
-							],
-							"path": [
-								"user",
-								"id"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -409,19 +347,23 @@
 					"response": []
 				},
 				{
-					"name": "List News By idUser",
+					"name": "Get Profile",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjgzODgzNjE5LCJleHAiOjE2ODQ3NDc2MTl9.PA472jcpYTv8dcAxMKNisF5sIw7zE2p0nOIQih4ALPE",
+									"type": "string"
+								}
+							]
+						},
 						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "{{token}}",
-								"type": "text"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -444,7 +386,7 @@
 					"response": []
 				},
 				{
-					"name": "List Filter News By Topic",
+					"name": "List Filter News Sin Logueo",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -459,13 +401,12 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{server}}/listFilterNews/Historia",
+							"raw": "{{server}}/listFilterNews",
 							"host": [
 								"{{server}}"
 							],
 							"path": [
-								"listFilterNews",
-								"Historia"
+								"listFilterNews"
 							]
 						}
 					},

@@ -1,42 +1,38 @@
 /* 
-    Controlador para Mostrar las noticias de un usuario logeado
+  Controlador para Mostrar las noticias en la página de inicio CODIGO NUEVO LISTADO NOTICIAS SIN LOGUEO
 */
 
+const { validateSchema } = require("../../helpers");
+const filterThemeSchema = require("../../schemas/filterThemeSchema");
+
+// Guardamos la conexión con la base de datos en una variable
 const getDB = require("../../db/getDB");
 
-//Guardamos la conexion con la base de datos en una variable
-
-// Creamos la funcion listas noticias
+// Creamos la función para listar las noticias
 const listFilterUserNews = async (req, res, next) => {
   let connection;
 
   try {
-    //Creamos la conexion con la base de datos
+    // Creamos la conexión con la base de datos
     connection = await getDB();
 
-    // Obtenemos los campos necesarios del req.body
-    const { topic } = req.params;
+    // Validamos los datos que recuperamos en el cuerpo de la petición con el schema de filterThemeSchema
+    await validateSchema(filterThemeSchema, req.query);
+
+    let sqlQuery = `SELECT n.*, COUNT(DISTINCT l.id) AS likes, COUNT(DISTINCT u.id) AS dislikes 
+                    FROM news n 
+                    LEFT JOIN user_like_news l ON n.id = l.idNews 
+                    LEFT JOIN user_unlike_news u ON n.id = u.idNews
+                    GROUP BY n.id ORDER BY n.id DESC`;
 
     // Recuperamos los datos de las noticias guardadas en la base de datos
-    const [news] = await connection.query(
-      `SELECT *
-              FROM news
-              WHERE topic = ? ORDER BY id DESC`,
-      [topic]
-    );
-    if (news.length === 0) {
-      res.status(404).send({
-        status: "Error",
-        message:
-          "Lo siento, no encuentro noticias con este tema. Por favor, escoge otro tema",
-      });
-      return;
-    }
-    // Respondemos con las noticias del usuario
+    const [news] = await connection.query(sqlQuery);
+
+    // Respondemos con las noticias
     res.send({
       status: "Ok",
-      message: "¡Lista de Noticias!",
-      data: [news],
+      message: "Lista de Noticias en la página de inicio",
+      data: news,
     });
   } catch (error) {
     next(error);
@@ -45,5 +41,5 @@ const listFilterUserNews = async (req, res, next) => {
   }
 };
 
-//Exportamos la funcion
+// Exportamos la función
 module.exports = listFilterUserNews;
