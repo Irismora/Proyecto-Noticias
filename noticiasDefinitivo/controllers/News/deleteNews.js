@@ -1,5 +1,5 @@
 const getDB = require("../../db/getDB");
-const { generateError, validateSchema } = require("../../helpers");
+const { generateError, validateSchema, deletePhoto } = require("../../helpers");
 const idNewsSchema = require("../../schemas/idNewsSchema");
 
 const deleteNews = async (req, res, next) => {
