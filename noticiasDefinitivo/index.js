@@ -92,8 +92,8 @@ app.get("/listNews", listNews);
 // Listar Noticias por id de Noticia
 app.get("/news/:idNews", getNewById);
 
-//Listar las noticias por topic
-app.get("/listFilterNews/:topic", listFilterUserNews);
+//Listar las noticias en HomePage(sin logueo)
+app.get("/listFilterNews", listFilterUserNews);
 
 // Añadir la photo de la Noticia
 app.post("/News/:idNews/photo", isUser, photoNews);
