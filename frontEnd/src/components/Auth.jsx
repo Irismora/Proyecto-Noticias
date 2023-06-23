@@ -1,7 +1,16 @@
-import React from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
+
 const Auth = () => {
-  return (
+  const { user, logout } = useContext(AuthContext);
+
+  return user ? (
+    <section>
+      Logged in as <Link to={`/user/${user.id}`}>{user.username}</Link>{" "}
+      <button onClick={() => logout()}>Logout</button>
+    </section>
+  ) : (
     <ul>
       <li>
         <Link to="/register">Register</Link>
