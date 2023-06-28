@@ -1,0 +1,635 @@
+{
+	"info": {
+		"_postman_id": "ab84361b-f4b7-447a-aa15-184548c1596e",
+		"name": "Noticias-Colaborativas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26979288"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "New User",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"usuario3\",\n    \"email\": \"usuario3@gmail.com\",\n    \"password\": \"abcdef\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/register",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"usuario3@gmail.com\",\n    \"password\": \"abcdef\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/login",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit User",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjgzODgzNjE5LCJleHAiOjE2ODQ3NDc2MTl9.PA472jcpYTv8dcAxMKNisF5sIw7zE2p0nOIQih4ALPE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"newEmail\": \"usuario5nuevo@gmail.com\",\n    \"newUsername\": \"UsuarioNuevo5\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/user",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete USer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiaWF0IjoxNjgzODgyNjQ4LCJleHAiOjE2ODQ3NDY2NDh9.MN728lFKDI1GqZ_jOU28-wjpz9NUz3zthAnxoMMw57s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"abcdef\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/user",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit User Pass",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjgzODgzNjE5LCJleHAiOjE2ODQ3NDc2MTl9.PA472jcpYTv8dcAxMKNisF5sIw7zE2p0nOIQih4ALPE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"usuario5nuevo@gmail.com\",\n    \"newPass\": \"1234567\",\n    \"confirmNewPass\": \"1234567\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/user/password",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"user",
+								"password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Noticias",
+			"item": [
+				{
+					"name": "New News",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjgzODgzNjE5LCJleHAiOjE2ODQ3NDc2MTl9.PA472jcpYTv8dcAxMKNisF5sIw7zE2p0nOIQih4ALPE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Noticia5\",\n    \"summery\": \"resumen nueva noticia\",\n    \"newsText\": \"texto de la nueva noticia\",\n    \"topic\": \"Historia\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/newNews",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"newNews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Photo News",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjgzODgzNjE5LCJleHAiOjE2ODQ3NDc2MTl9.PA472jcpYTv8dcAxMKNisF5sIw7zE2p0nOIQih4ALPE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "photo",
+									"type": "file",
+									"src": "/C:/Users/Iris Morales Ortega/OneDrive/Documentos/IRIS/CURSOS/HACK A BOSS/BOOTCAMP MIS CARPETAS/6NodeJs/sendEmai.png"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{server}}/News/:idNews/photo",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"News",
+								":idNews",
+								"photo"
+							],
+							"variable": [
+								{
+									"key": "idNews",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete News",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjgzODgzNjE5LCJleHAiOjE2ODQ3NDc2MTl9.PA472jcpYTv8dcAxMKNisF5sIw7zE2p0nOIQih4ALPE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/News/2",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"News",
+								"2"
+							],
+							"query": [
+								{
+									"key": "idNews",
+									"value": "2",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjgzODgzNjE5LCJleHAiOjE2ODQ3NDc2MTl9.PA472jcpYTv8dcAxMKNisF5sIw7zE2p0nOIQih4ALPE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/profile",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Filter News Sin Logueo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{server}}/listFilterNews",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"listFilterNews"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit News",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjgzODgzNjE5LCJleHAiOjE2ODQ3NDc2MTl9.PA472jcpYTv8dcAxMKNisF5sIw7zE2p0nOIQih4ALPE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Noticia2\",\r\n    \"summery\":\"noticia 2 editada\",\r\n    \"newsText\": \"texto modificado de la noticia 2\",\r\n    \"topic\":\"Historia\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}/News/2",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"News",
+								"2"
+							],
+							"query": [
+								{
+									"key": "idNews",
+									"value": "9",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List News",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjgzODgzNjE5LCJleHAiOjE2ODQ3NDc2MTl9.PA472jcpYTv8dcAxMKNisF5sIw7zE2p0nOIQih4ALPE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/listNews",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"listNews"
+							],
+							"query": [
+								{
+									"key": "topic",
+									"value": "Historia",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get New By idNew",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}/news/2",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"news",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Favoritos",
+			"item": [
+				{
+					"name": "Add Like",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjgzODgzNjE5LCJleHAiOjE2ODQ3NDc2MTl9.PA472jcpYTv8dcAxMKNisF5sIw7zE2p0nOIQih4ALPE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/News/1/like",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"News",
+								"1",
+								"like"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Dislike",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjgzODgzNjE5LCJleHAiOjE2ODQ3NDc2MTl9.PA472jcpYTv8dcAxMKNisF5sIw7zE2p0nOIQih4ALPE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "{{token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server}}/News/1/unlike",
+							"host": [
+								"{{server}}"
+							],
+							"path": [
+								"News",
+								"1",
+								"unlike"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjgzODI3NDI2LCJleHAiOjE2ODQ2OTE0MjZ9.nNQGcLx2kNnGSByHX-u-BrhtAUe1wtUOGMQ7Mtz6gZc",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "server",
+			"value": "http://localhost:3000",
+			"type": "default"
+		}
+	]
+}

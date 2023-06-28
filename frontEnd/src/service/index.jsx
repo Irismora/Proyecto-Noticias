@@ -98,3 +98,4 @@ export const getFilteredNewsService = async (token) => {
 
   return json.data;
 };
+

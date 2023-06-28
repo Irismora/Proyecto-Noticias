@@ -30,6 +30,7 @@ const loginUser = require("./controllers/users/loginUser");
 const editUserPass = require("./controllers/users/editPassUser");
 const editUser = require("./controllers/users/editUserData");
 const deleteUser = require("./controllers/users/deleteUser");
+const userData = require("./controllers/users/userData");
 
 /*   ### Controladores de News ###  */
 
@@ -52,6 +53,7 @@ const { APP_PORT, DB_HOST } = process.env;
 // Middleware de validación de usuario
 const { isAuth, isUser } = require("./middlewares/isAuth");
 const canEditNews = require("./middlewares/canEditNews");
+
 
 //Middleware por el qu pasa todas las peticiones
 app.use(isAuth);
@@ -78,6 +80,9 @@ app.put("/user", isUser, editUser);
 // Borrar un usuario
 app.delete("/user", isUser, deleteUser);
 
+//Recuperar info del usuario
+app.get("/user", isUser, userData );
+
 /*   ### Endpoints News ###  */
 
 // Registrar nueva Noticia
@@ -92,8 +97,8 @@ app.get("/listNews", listNews);
 // Listar Noticias por id de Noticia
 app.get("/news/:idNews", getNewById);
 
-//Listar las noticias por topic
-app.get("/listFilterNews/:topic", listFilterUserNews);
+//Listar las noticias en HomePage(sin logueo)
+app.get("/listFilterNews", listFilterUserNews);
 
 // Añadir la photo de la Noticia
 app.post("/News/:idNews/photo", isUser, photoNews);

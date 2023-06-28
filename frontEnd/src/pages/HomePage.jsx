@@ -1,4 +1,5 @@
 import useNews from "../hooks/useNews";
+
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { ErrorMessage } from "../components/ErrorMessage";
@@ -9,9 +10,11 @@ const HomePage = () => {
   if (loading) return <p>cargando noticias....</p>;
   if (error) return <ErrorMessage message={error} />;
 
+
   console.log(news);
   return (
     <section>
+
       {user ? <NewNew addNew={addNew} /> : null}
 
       <h1>Ultimas Noticias</h1>
@@ -20,6 +23,8 @@ const HomePage = () => {
       ) : (
         <p>No se encontraron noticias</p>
       )}
+
+
     </section>
   );
 };
