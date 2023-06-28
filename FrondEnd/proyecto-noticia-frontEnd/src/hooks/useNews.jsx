@@ -23,14 +23,7 @@ const useNews = () => {
     loadNews();
   }, []);
 
-
-  const addNew = (newItem) => {
-    setNews([newItem, ...news]);
-  };
-
-  return { news, loading, error, addNew };
-
-
+  return { news, loading, error };
 };
 
 export default useNews;
