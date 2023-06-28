@@ -9,7 +9,7 @@ export const getAllNewsService = async () => {
   if (!response.ok) {
     throw new Error(json.message);
   }
-  return {};
+  return json;
 };
 
 export const registerUserService = async ({ username, email, password }) => {
@@ -78,4 +78,41 @@ export const deleteNoticiaService = async ({ id, token }) => {
   if (!response.ok) {
     throw new Error(json.message);
   }
+};
+
+export const sendNewService = async ({ data, token }) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}/newNews`, {
+    method: "POST",
+    body: data,
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
+export const getFilteredNewsService = async (token) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND}/listFilterNews`,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
 };

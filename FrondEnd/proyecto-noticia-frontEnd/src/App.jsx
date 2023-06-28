@@ -10,7 +10,6 @@ import Login from "./pages/Login";
 import NoticiasId from "./pages/NoticiaId";
 import NoticiaTopic from "./pages/NoticiaTopic";
 import NotFound from "./pages/NotFound";
-
 function App() {
   return (
     <main>
