@@ -7,8 +7,13 @@ export const NewNew = ({ addNew }) => {
   const [loading, setLoading] = useState(false);
   const { token } = useContext(AuthContext);
 <<<<<<< HEAD
+<<<<<<< HEAD
   const [photo, setPhoto] = useState(null);
 
+=======
+  /*   const [image, setImage] = useState(null);
+   */
+>>>>>>> 0042847 (ListNewsSinToken)
 =======
   /*   const [image, setImage] = useState(null);
    */
@@ -24,8 +29,13 @@ export const NewNew = ({ addNew }) => {
        window.location.reload();   /* OJO CON ESTO NO ES EFICIENTE*/
       addNew(news);
 <<<<<<< HEAD
+<<<<<<< HEAD
       e.target.reset();
       setPhoto(null);
+=======
+    
+      
+>>>>>>> 0042847 (ListNewsSinToken)
 =======
     
       

@@ -1,5 +1,9 @@
 export const getAllNewsService = async () => {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+ /*  const token = localStorage.getItem("token"); */
+>>>>>>> 0042847 (ListNewsSinToken)
 =======
  /*  const token = localStorage.getItem("token"); */
 >>>>>>> 0042847 (ListNewsSinToken)
@@ -102,6 +106,7 @@ export const sendNewService = async ({ data, token }) => {
 };
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 //en linea 95 no pone ruta, nosotros tenemos newnews, en authoritation el lo tiene sin bearer
 
 export const getFilteredNewsService = async (token) => {
@@ -136,15 +141,24 @@ export const addPhotoService = async (id, data, token) => {
 =======
 export const getFilteredNewsService = async ( ) => {
 >>>>>>> 0042847 (ListNewsSinToken)
+=======
+export const getFilteredNewsService = async ( ) => {
+>>>>>>> 0042847 (ListNewsSinToken)
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND}/News/${id}/photo`,
     {
+<<<<<<< HEAD
 <<<<<<< HEAD
       method: "POST",
       body: data,
       headers: {
         Authorization: "Bearer " + token,
       },
+=======
+     /*  headers: {
+        Authorization: `Bearer ${token}`,
+      }, */
+>>>>>>> 0042847 (ListNewsSinToken)
 =======
      /*  headers: {
         Authorization: `Bearer ${token}`,
@@ -178,4 +192,7 @@ export const getFilteredNewsService = async ( ) => {
 
   return json.data;
 }; */
+<<<<<<< HEAD
+>>>>>>> 0042847 (ListNewsSinToken)
+=======
 >>>>>>> 0042847 (ListNewsSinToken)

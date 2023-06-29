@@ -38,6 +38,9 @@ const useNews = (id) => {
   return { news, loading, error, removeNoticia, addNew };
 =======
   return { news, loading, error, addNew };
+<<<<<<< HEAD
+>>>>>>> 0042847 (ListNewsSinToken)
+=======
 >>>>>>> 0042847 (ListNewsSinToken)
 };
 /* Permite agregar un elemento lista de noticias */

@@ -4,8 +4,12 @@ import { AuthContext } from "../context/AuthContext";
 import { ErrorMessage } from "../components/ErrorMessage";
 import { NewNew } from "../components/NewNew";
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { NoticiaList } from "../components/NoticiaList";
 
+=======
+import { NewsList } from "../components/NewList"
+>>>>>>> 0042847 (ListNewsSinToken)
 =======
 import { NewsList } from "../components/NewList"
 >>>>>>> 0042847 (ListNewsSinToken)
@@ -16,7 +20,10 @@ const HomePage = () => {
   if (error) return <ErrorMessage message={error} />;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 0042847 (ListNewsSinToken)
   console.log(news);
 >>>>>>> 0042847 (ListNewsSinToken)
   return (
@@ -24,9 +31,12 @@ const HomePage = () => {
       {user ? <NewNew addNew={addNew} /> : null}
       <h1>Ultimas Noticias</h1>
 <<<<<<< HEAD
+<<<<<<< HEAD
       <NoticiaList news={news} removeNoticia={removeNoticia} /> // Pasa las
       noticias al componente NewsList
 =======
+=======
+>>>>>>> 0042847 (ListNewsSinToken)
       {/* {news.length > 0 ? (
 
         <NewsList news={news} /> // Pasa las noticias al componente NewsList
@@ -38,6 +48,9 @@ const HomePage = () => {
       ) : (
         <p>No se encontraron noticias</p>
       )}
+<<<<<<< HEAD
+>>>>>>> 0042847 (ListNewsSinToken)
+=======
 >>>>>>> 0042847 (ListNewsSinToken)
     </section>
   );
