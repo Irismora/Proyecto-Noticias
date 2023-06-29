@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllNewsService } from "../service";
 
-const useNews = () => {
+const useNews = (id) => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -10,8 +10,11 @@ const useNews = () => {
     const loadNews = async () => {
       try {
         setLoading(true);
+  const data = id
+          ? await getUserNewsService(id)
+          : await getAllNewsService();
 
-        const data = await getAllNewsService();
+        
 
         setNews(data);
       } catch (error) {
@@ -21,17 +24,21 @@ const useNews = () => {
       }
     };
     loadNews();
-  }, []);
+  }, [id]);
 
   const addNew = (data) => {
     setNews([data, ...news]);
   };
 
+<<<<<<< HEAD
   const removeNoticia = (id) => {
     setNews(news.filter((noticia) => noticia.id !== id));
   };
 
   return { news, loading, error, removeNoticia, addNew };
+=======
+  return { news, loading, error, addNew };
+>>>>>>> 0042847 (ListNewsSinToken)
 };
-
+/* Permite agregar un elemento lista de noticias */
 export default useNews;

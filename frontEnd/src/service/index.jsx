@@ -1,4 +1,8 @@
 export const getAllNewsService = async () => {
+<<<<<<< HEAD
+=======
+ /*  const token = localStorage.getItem("token"); */
+>>>>>>> 0042847 (ListNewsSinToken)
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND}/listFilterNews`
   );
@@ -97,6 +101,7 @@ export const sendNewService = async ({ data, token }) => {
   return json.data;
 };
 
+<<<<<<< HEAD
 //en linea 95 no pone ruta, nosotros tenemos newnews, en authoritation el lo tiene sin bearer
 
 export const getFilteredNewsService = async (token) => {
@@ -128,14 +133,23 @@ export const getSingleNewService = async (id) => {
 };
 
 export const addPhotoService = async (id, data, token) => {
+=======
+export const getFilteredNewsService = async ( ) => {
+>>>>>>> 0042847 (ListNewsSinToken)
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND}/News/${id}/photo`,
     {
+<<<<<<< HEAD
       method: "POST",
       body: data,
       headers: {
         Authorization: "Bearer " + token,
       },
+=======
+     /*  headers: {
+        Authorization: `Bearer ${token}`,
+      }, */
+>>>>>>> 0042847 (ListNewsSinToken)
     }
   );
 
@@ -147,3 +161,21 @@ export const addPhotoService = async (id, data, token) => {
 
   return json.data;
 };
+<<<<<<< HEAD
+=======
+
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* export const getAllEntriesWithVotesService = async () => {
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND}//listFilterNews`
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+}; */
+>>>>>>> 0042847 (ListNewsSinToken)
