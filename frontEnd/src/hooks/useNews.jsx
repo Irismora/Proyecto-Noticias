@@ -26,11 +26,14 @@ const useNews = (id) => {
     loadNews();
   }, [id]);
 
+
   const addNew = (data) => {
     setNews([data, ...news]);
   };
 
   return { news, loading, error, addNew };
+
+
 };
 /* Permite agregar un elemento lista de noticias */
 export default useNews;

@@ -5,7 +5,7 @@ import { ErrorMessage } from "../components/ErrorMessage";
 import { NewNew } from "../components/NewNew";
 import { NewsList } from "../components/NewList"
 const HomePage = () => {
-  const { news, loading, error, addNew } = useNews();
+  const { news, loading, error, addNew, removeNoticia } = useNews();
   const { user } = useContext(AuthContext);
   if (loading) return <p>cargando noticias....</p>;
   if (error) return <ErrorMessage message={error} />;
@@ -27,6 +27,7 @@ const HomePage = () => {
       ) : (
         <p>No se encontraron noticias</p>
       )}
+
     </section>
   );
 };
