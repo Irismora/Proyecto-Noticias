@@ -8,8 +8,13 @@ export const NewNew = ({ addNew }) => {
   const { token } = useContext(AuthContext);
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   const [photo, setPhoto] = useState(null);
 
+=======
+  /*   const [image, setImage] = useState(null);
+   */
+>>>>>>> 0042847 (ListNewsSinToken)
 =======
   /*   const [image, setImage] = useState(null);
    */
@@ -27,8 +32,11 @@ export const NewNew = ({ addNew }) => {
       const news = await sendNewService({ data, token });
       
        window.location.reload();   /* OJO CON ESTO NO ES EFICIENTE*/
+<<<<<<< HEAD
       
        window.location.reload();   /* OJO CON ESTO NO ES EFICIENTE*/
+=======
+>>>>>>> 0042847 (ListNewsSinToken)
       addNew(news);
     
       

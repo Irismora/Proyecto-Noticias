@@ -1,10 +1,14 @@
 import useNews from "../hooks/useNews";
 import { useContext, React } from "react";
+<<<<<<< HEAD
 import { useContext, React } from "react";
+=======
+>>>>>>> 0042847 (ListNewsSinToken)
 import { AuthContext } from "../context/AuthContext";
 import { ErrorMessage } from "../components/ErrorMessage";
 import { NewNew } from "../components/NewNew";
 import { NewsList } from "../components/NewList"
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 import { NoticiaList } from "../components/NoticiaList";
@@ -15,6 +19,8 @@ import { NewsList } from "../components/NewList"
 =======
 import { NewsList } from "../components/NewList"
 >>>>>>> 0042847 (ListNewsSinToken)
+=======
+>>>>>>> 0042847 (ListNewsSinToken)
 const HomePage = () => {
   const { news, loading, error, addNew, removeNoticia } = useNews();
   const { user } = useContext(AuthContext);
@@ -23,7 +29,10 @@ const HomePage = () => {
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 0042847 (ListNewsSinToken)
 =======
 >>>>>>> 0042847 (ListNewsSinToken)
   console.log(news);
@@ -34,9 +43,12 @@ const HomePage = () => {
       <h1>Ultimas Noticias</h1>
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <NoticiaList news={news} removeNoticia={removeNoticia} /> // Pasa las
       noticias al componente NewsList
 =======
+=======
+>>>>>>> 0042847 (ListNewsSinToken)
 =======
 >>>>>>> 0042847 (ListNewsSinToken)
       {/* {news.length > 0 ? (
@@ -49,6 +61,7 @@ const HomePage = () => {
         <NewsList news={news} />
       ) : (
         <p>No se encontraron noticias</p>
+<<<<<<< HEAD
       )} */}
       {( loading == false ) ? (
         <NewsList news={news} />
@@ -58,6 +71,9 @@ const HomePage = () => {
 <<<<<<< HEAD
 >>>>>>> 0042847 (ListNewsSinToken)
 =======
+>>>>>>> 0042847 (ListNewsSinToken)
+=======
+      )}
 >>>>>>> 0042847 (ListNewsSinToken)
     </section>
   );
