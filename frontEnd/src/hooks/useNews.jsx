@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllNewsService } from "../service";
 
-const useNews = (id) => {
+const useNews = (idid) => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -38,10 +38,7 @@ const useNews = (id) => {
   return { news, loading, error, removeNoticia, addNew };
 =======
   return { news, loading, error, addNew };
-<<<<<<< HEAD
->>>>>>> 0042847 (ListNewsSinToken)
-=======
->>>>>>> 0042847 (ListNewsSinToken)
 };
+/* Permite agregar un elemento lista de noticias */
 /* Permite agregar un elemento lista de noticias */
 export default useNews;

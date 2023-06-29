@@ -1,8 +1,10 @@
 import useNews from "../hooks/useNews";
 import { useContext, React } from "react";
+import { useContext, React } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { ErrorMessage } from "../components/ErrorMessage";
 import { NewNew } from "../components/NewNew";
+import { NewsList } from "../components/NewList"
 <<<<<<< HEAD
 <<<<<<< HEAD
 import { NoticiaList } from "../components/NoticiaList";
@@ -40,6 +42,11 @@ const HomePage = () => {
       {/* {news.length > 0 ? (
 
         <NewsList news={news} /> // Pasa las noticias al componente NewsList
+      ) : (
+        <p>No se encontraron noticias</p>
+      )} */}
+      {( loading == false ) ? (
+        <NewsList news={news} />
       ) : (
         <p>No se encontraron noticias</p>
       )} */}

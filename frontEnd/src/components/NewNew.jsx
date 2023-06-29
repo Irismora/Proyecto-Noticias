@@ -27,19 +27,11 @@ export const NewNew = ({ addNew }) => {
       const news = await sendNewService({ data, token });
       
        window.location.reload();   /* OJO CON ESTO NO ES EFICIENTE*/
+      
+       window.location.reload();   /* OJO CON ESTO NO ES EFICIENTE*/
       addNew(news);
-<<<<<<< HEAD
-<<<<<<< HEAD
-      e.target.reset();
-      setPhoto(null);
-=======
     
       
->>>>>>> 0042847 (ListNewsSinToken)
-=======
-    
-      
->>>>>>> 0042847 (ListNewsSinToken)
     } catch (error) {
       setError(error.message);
     } finally {
