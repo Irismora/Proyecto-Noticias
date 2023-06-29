@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { getFilteredNewsService } from "../service";
 
-const NewsList = ({ token }) => {
+export const NewsList = ({ token }) => {
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -31,14 +31,23 @@ const NewsList = ({ token }) => {
     return <p>Error al cargar las noticias: {error}</p>;
   }
 
-  return (
-    <div>
-      <h2>Lista de noticias filtradas</h2>
-      {news.map((item) => (
-        <div key={item.id}>{item.title}</div>
-      ))}
-    </div>
-  );
+ return (
+  <div>
+    <h2>Lista de noticias filtradas</h2>
+    {news.map((item) => (
+      <div key={item.id}>
+        <h3>{item.title}</h3>
+        <p>Summery: {item.summery}</p>
+        <p>Tema: {item.topic}</p>
+        <p>Foto: {item.photo}</p>
+        <p>Texto de la noticia: {item.newsText}</p>
+        <p>Likes: {item.likes}</p>
+        <p>Dislikes: {item.dislikes}</p>
+      </div>
+    ))}
+  </div>
+);
+
 };
 
-export default NewsList;
+

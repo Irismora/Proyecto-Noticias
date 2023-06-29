@@ -1,5 +1,5 @@
 export const getAllNewsService = async () => {
-  const token = localStorage.getItem("token");
+ /*  const token = localStorage.getItem("token"); */
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND}/listFilterNews`
   );
@@ -80,13 +80,13 @@ export const sendNewService = async ({ data, token }) => {
   return json.data;
 };
 
-export const getFilteredNewsService = async (token) => {
+export const getFilteredNewsService = async ( ) => {
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND}/listFilterNews`,
     {
-      headers: {
+     /*  headers: {
         Authorization: `Bearer ${token}`,
-      },
+      }, */
     }
   );
 
@@ -99,3 +99,17 @@ export const getFilteredNewsService = async (token) => {
   return json.data;
 };
 
+/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
+/* export const getAllEntriesWithVotesService = async () => {
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND}//listFilterNews`
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+}; */
