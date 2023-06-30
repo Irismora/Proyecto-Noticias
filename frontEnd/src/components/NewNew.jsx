@@ -4,9 +4,9 @@ import { AuthContext } from "../context/AuthContext";
 
 export const NewNew = ({ addNew }) => {
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState("false");
+  const [loading, setLoading] = useState(false);
   const { token } = useContext(AuthContext);
-  const [image, setImage] = useState(null);
+  const [photo, setPhoto] = useState(null);
 
   const handleForm = async (e) => {
     e.preventDefault();
@@ -17,6 +17,8 @@ export const NewNew = ({ addNew }) => {
       const news = await sendNewService({ data, token });
 
       addNew(news);
+      e.target.reset();
+      setPhoto(null);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -38,9 +40,9 @@ export const NewNew = ({ addNew }) => {
           name="photo"
           id="photo"
           accept={"image/*"}
-          onChange={(e) => setImage(e.target.files[0])}
+          onChange={(e) => setPhoto(e.target.files[0])}
         />
-        {image ? (
+        {photo ? (
           <figure>
             <img
               src={URL.createObjectURL(image)}
@@ -67,8 +69,8 @@ export const NewNew = ({ addNew }) => {
       </fieldset>
 
       <button>SEND NEWS</button>
-      {loading ? <p>Noticia enviada</p> : null}
       {error ? <p>{error}</p> : null}
+      {loading ? <p>Noticia enviada</p> : null}
     </form>
   );
 };

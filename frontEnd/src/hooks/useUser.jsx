@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
-import { getSingleNewService } from "../services";
+import { getMyDataService } from "../services";
 
-const useNoticia = (id) => {
-  const [noticia, setNoticia] = useState([]);
+const useUser = (id) => {
+  const [user, setUser] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const loadNoticia = async () => {
+    const loadUser = async () => {
       try {
         setLoading(true);
-        const data = await getSingleNewService(id);
+        const data = await getMyDataService(id);
 
-        setNoticia(data);
+        setUser(data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -20,10 +20,10 @@ const useNoticia = (id) => {
       }
     };
 
-    loadNoticia();
+    loadUser();
   }, [id]);
 
-  return { noticia, error, loading };
+  return { user, error, loading };
 };
 
-export default useNoticia;
+export default useUser;

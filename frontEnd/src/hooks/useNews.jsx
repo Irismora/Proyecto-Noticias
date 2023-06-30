@@ -3,7 +3,7 @@ import { getAllNewsService } from "../service";
 
 const useNews = () => {
   const [news, setNews] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -23,12 +23,12 @@ const useNews = () => {
     loadNews();
   }, []);
 
-  const removeNoticia = (id) => {
-    setNews(news.filter((noticia) => noticia.id !== id));
+  const addNew = (data) => {
+    setNews([data, ...news]);
   };
 
-  const addNew = (newItem) => {
-    setNews([newItem, ...news]);
+  const removeNoticia = (id) => {
+    setNews(news.filter((noticia) => noticia.id !== id));
   };
 
   return { news, loading, error, removeNoticia, addNew };
