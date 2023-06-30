@@ -3,12 +3,8 @@ import { useContext, React } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { ErrorMessage } from "../components/ErrorMessage";
 import { NewNew } from "../components/NewNew";
-<<<<<<< HEAD
 import { NoticiaList } from "../components/NoticiaList";
 
-=======
-import { NewsList } from "../components/NewList"
->>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
 const HomePage = () => {
   const { news, loading, error, addNew, removeNoticia } = useNews();
   const { user } = useContext(AuthContext);
@@ -19,23 +15,8 @@ const HomePage = () => {
     <section>
       {user ? <NewNew addNew={addNew} /> : null}
       <h1>Ultimas Noticias</h1>
-<<<<<<< HEAD
       <NoticiaList news={news} removeNoticia={removeNoticia} /> // Pasa las
       noticias al componente NewsList
-=======
-      {/* {news.length > 0 ? (
-
-        <NewsList news={news} /> // Pasa las noticias al componente NewsList
-      ) : (
-        <p>No se encontraron noticias</p>
-      )} */}
-      {( loading == false ) ? (
-        <NewsList news={news} />
-      ) : (
-        <p>No se encontraron noticias</p>
-      )}
-
->>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
     </section>
   );
 };
