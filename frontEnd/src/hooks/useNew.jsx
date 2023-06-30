@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getSingleNewService } from "../services";
+import { getSingleNewService } from "../service";
 
 const useNoticia = (id) => {
   const [noticia, setNoticia] = useState([]);
