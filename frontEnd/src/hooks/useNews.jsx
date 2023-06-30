@@ -26,22 +26,13 @@ const useNews = (id) => {
     loadNews();
   }, [id]);
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
   const addNew = (data) => {
     setNews([data, ...news]);
   };
 
-<<<<<<< HEAD
   const removeNoticia = (id) => {
     setNews(news.filter((noticia) => noticia.id !== id));
   };
-=======
-  return { news, loading, error, addNew };
-
->>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
 
 };
 /* Permite agregar un elemento lista de noticias */
