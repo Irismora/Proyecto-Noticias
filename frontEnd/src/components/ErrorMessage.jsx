@@ -5,7 +5,7 @@ export const ErrorMessage = ({ message }) => {
     <section className="error">
       <h1>Error</h1>
       <p>{message}</p>
-      <Link to={"/"}>Go to home</Link>
+      <Link to={"/"}>Volver a la pagina principal</Link>
     </section>
   );
 };

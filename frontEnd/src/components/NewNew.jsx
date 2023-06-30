@@ -4,10 +4,15 @@ import { AuthContext } from "../context/AuthContext";
 
 export const NewNew = ({ addNew }) => {
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState("false");
+  const [loading, setLoading] = useState(false);
   const { token } = useContext(AuthContext);
+<<<<<<< HEAD
+  const [photo, setPhoto] = useState(null);
+
+=======
   /*   const [image, setImage] = useState(null);
    */
+>>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
   const handleForm = async (e) => {
     e.preventDefault();
 
@@ -18,8 +23,13 @@ export const NewNew = ({ addNew }) => {
       
        window.location.reload();   /* OJO CON ESTO NO ES EFICIENTE*/
       addNew(news);
+<<<<<<< HEAD
+      e.target.reset();
+      setPhoto(null);
+=======
     
       
+>>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
     } catch (error) {
       setError(error.message);
     } finally {
@@ -41,9 +51,9 @@ export const NewNew = ({ addNew }) => {
           name="photo"
           id="photo"
           accept={"image/*"}
-          onChange={(e) => setImage(e.target.files[0])}
+          onChange={(e) => setPhoto(e.target.files[0])}
         />
-        {image ? (
+        {photo ? (
           <figure>
             <img
               src={URL.createObjectURL(image)}
@@ -70,8 +80,8 @@ export const NewNew = ({ addNew }) => {
       </fieldset>
 
       <button>SEND NEWS</button>
-      {loading ? <p>Noticia enviada</p> : null}
       {error ? <p>{error}</p> : null}
+      {loading ? <p>Noticia enviada</p> : null}
     </form>
   );
 };
