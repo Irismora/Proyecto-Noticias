@@ -1,5 +1,4 @@
 export const getAllNewsService = async () => {
- /*  const token = localStorage.getItem("token"); */
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND}/listFilterNews`
   );

@@ -4,7 +4,7 @@ import { AuthContext } from "../context/AuthContext";
 
 export const NewNew = ({ addNew }) => {
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState("false");
+  const [loading, setLoading] = useState(false);
   const { token } = useContext(AuthContext);
   /*   const [image, setImage] = useState(null);
    */
@@ -16,7 +16,7 @@ export const NewNew = ({ addNew }) => {
       const data = new FormData(e.target);
       const news = await sendNewService({ data, token });
       
-       window.location.reload();   /* OJO CON ESTO NO ES EFICIENTE*/
+      //window.location.reload();   /* OJO CON ESTO NO ES EFICIENTE*/
       addNew(news);
     
       
