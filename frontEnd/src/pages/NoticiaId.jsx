@@ -4,7 +4,7 @@ import { Noticia } from "../components/Noticia";
 import { ErrorMessage } from "../components/ErrorMessage";
 import { Loading } from "../components/Loading";
 
-export const NoticiaId = () => {
+const NoticiaId = () => {
   const { id } = useParams();
   const { noticia, error, loading } = useNew(id);
 
@@ -18,3 +18,5 @@ export const NoticiaId = () => {
     </section>
   );
 };
+
+export default NoticiaId
