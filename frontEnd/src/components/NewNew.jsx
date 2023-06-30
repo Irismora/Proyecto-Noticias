@@ -6,13 +6,8 @@ export const NewNew = ({ addNew }) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { token } = useContext(AuthContext);
-<<<<<<< HEAD
   const [photo, setPhoto] = useState(null);
 
-=======
-  /*   const [image, setImage] = useState(null);
-   */
->>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
   const handleForm = async (e) => {
     e.preventDefault();
 
@@ -23,13 +18,8 @@ export const NewNew = ({ addNew }) => {
       
       //window.location.reload();   /* OJO CON ESTO NO ES EFICIENTE*/
       addNew(news);
-<<<<<<< HEAD
       e.target.reset();
       setPhoto(null);
-=======
-    
-      
->>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
     } catch (error) {
       setError(error.message);
     } finally {
