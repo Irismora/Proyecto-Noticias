@@ -21,7 +21,7 @@ export const NewNew = ({ addNew }) => {
       const data = new FormData(e.target);
       const news = await sendNewService({ data, token });
       
-       window.location.reload();   /* OJO CON ESTO NO ES EFICIENTE*/
+      //window.location.reload();   /* OJO CON ESTO NO ES EFICIENTE*/
       addNew(news);
 <<<<<<< HEAD
       e.target.reset();
