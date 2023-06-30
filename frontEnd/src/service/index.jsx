@@ -1,4 +1,7 @@
 export const getAllNewsService = async () => {
+<<<<<<< HEAD
+=======
+>>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND}/listFilterNews`
   );
@@ -8,7 +11,7 @@ export const getAllNewsService = async () => {
   if (!response.ok) {
     throw new Error(json.message);
   }
-  return json;
+  return json.data;
 };
 
 export const registerUserService = async ({ username, email, password }) => {
@@ -61,6 +64,27 @@ export const getMyDataService = async (token) => {
   return json.data;
 };
 
+<<<<<<< HEAD
+export const deleteNoticiaService = async ({ id, token }) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND}/noticia/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        Authorization: token,
+      },
+    }
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};
+
+=======
+>>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
 export const sendNewService = async ({ data, token }) => {
   const response = await fetch(`${import.meta.env.VITE_BACKEND}/newNews`, {
     method: "POST",
@@ -79,13 +103,55 @@ export const sendNewService = async ({ data, token }) => {
   return json.data;
 };
 
+<<<<<<< HEAD
+//en linea 95 no pone ruta, nosotros tenemos newnews, en authoritation el lo tiene sin bearer
+
+export const getFilteredNewsService = async (token) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}/listNews`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
+export const getSingleNewService = async (id) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}/news/${id}`);
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
+export const addPhotoService = async (id, data, token) => {
+=======
 export const getFilteredNewsService = async ( ) => {
+>>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
   const response = await fetch(
-    `${import.meta.env.VITE_BACKEND}/listFilterNews`,
+    `${import.meta.env.VITE_BACKEND}/News/${id}/photo`,
     {
+<<<<<<< HEAD
+      method: "POST",
+      body: data,
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+=======
      /*  headers: {
         Authorization: `Bearer ${token}`,
       }, */
+>>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
     }
   );
 

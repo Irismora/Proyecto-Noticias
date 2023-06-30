@@ -1,4 +1,17 @@
-//anadir a export const NoticiaList = ({news, removeNoticia})
+import { Noticia } from "./Noticia";
 
-//linea 6 es la otra parte y esta hecha
-<Noticia noticia={noticia} removeNoticia={removeNoticia} />;
+export const NoticiaList = ({ news, removeNoticia }) => {
+  return news.length ? (
+    <ul className="Noticia-list">
+      {news.map((noticia) => {
+        return (
+          <li key={noticia.id}>
+            <Noticia noticia={noticia} removeNoticia={removeNoticia} />
+          </li>
+        );
+      })}
+    </ul>
+  ) : (
+    <p>No hay noticias todavia...</p>
+  );
+};

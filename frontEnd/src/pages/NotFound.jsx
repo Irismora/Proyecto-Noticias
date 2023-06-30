@@ -1,11 +1,5 @@
-import { Link } from "react-router-dom";
-const NotFound = () => {
-  return (
-    <section>
-      <h1>Pagina no encontrada</h1>
-      <Link to={"/"}>Volver a la pagina principal</Link>
-    </section>
-  );
-};
+import { ErrorMessage } from "../components/ErrorMessage";
 
-export default NotFound;
+export const NotFound = () => {
+  return <ErrorMessage message={"Page not found"} />;
+};
