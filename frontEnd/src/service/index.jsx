@@ -1,7 +1,4 @@
 export const getAllNewsService = async () => {
-<<<<<<< HEAD
-=======
->>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND}/listFilterNews`
   );
@@ -64,7 +61,6 @@ export const getMyDataService = async (token) => {
   return json.data;
 };
 
-<<<<<<< HEAD
 export const deleteNoticiaService = async ({ id, token }) => {
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND}/noticia/${id}`,
@@ -83,8 +79,6 @@ export const deleteNoticiaService = async ({ id, token }) => {
   }
 };
 
-=======
->>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
 export const sendNewService = async ({ data, token }) => {
   const response = await fetch(`${import.meta.env.VITE_BACKEND}/newNews`, {
     method: "POST",
@@ -103,7 +97,6 @@ export const sendNewService = async ({ data, token }) => {
   return json.data;
 };
 
-<<<<<<< HEAD
 //en linea 95 no pone ruta, nosotros tenemos newnews, en authoritation el lo tiene sin bearer
 
 export const getFilteredNewsService = async (token) => {
@@ -135,23 +128,14 @@ export const getSingleNewService = async (id) => {
 };
 
 export const addPhotoService = async (id, data, token) => {
-=======
-export const getFilteredNewsService = async ( ) => {
->>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND}/News/${id}/photo`,
     {
-<<<<<<< HEAD
       method: "POST",
       body: data,
       headers: {
         Authorization: "Bearer " + token,
       },
-=======
-     /*  headers: {
-        Authorization: `Bearer ${token}`,
-      }, */
->>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
     }
   );
 
