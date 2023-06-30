@@ -147,3 +147,19 @@ export const addPhotoService = async (id, data, token) => {
 
   return json.data;
 };
+
+export const getUserNewsService = async (token) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}/profile`, {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.user;
+};

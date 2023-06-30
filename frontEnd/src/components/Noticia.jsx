@@ -23,11 +23,11 @@ export const Noticia = ({ noticia, removeNoticia }) => {
 
   return (
     <article className="noticia">
-      <p>{noticia.text}</p>
-      {noticia.image ? (
+      <p>{noticia.title}</p>
+      {noticia.photo ? (
         <img
-          src={`${import.meta.env.VITE_BACKEND}/uploads/${noticia.image}`}
-          alt={noticia.text}
+          src={`${import.meta.env.VITE_BACKEND}/uploads/${noticia.photo}`}
+          alt={noticia.title}
         />
       ) : null}
 

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAllNewsService } from "../service";
+import { getUserNewsService } from "../service";
 
 const useNews = (id) => {
   const [news, setNews] = useState([]);
@@ -11,7 +12,7 @@ const useNews = (id) => {
       try {
         setLoading(true);
   const data = id
-          ? await getUserNewsService(id)
+          ? await getUserNewsService(token)
           : await getAllNewsService();
 
         
@@ -34,6 +35,7 @@ const useNews = (id) => {
     setNews(news.filter((noticia) => noticia.id !== id));
   };
 
+  return {news, loading, error, addNew, removeNoticia};
 };
 /* Permite agregar un elemento lista de noticias */
 export default useNews;
