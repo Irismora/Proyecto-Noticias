@@ -10,7 +10,7 @@ const HomePage = () => {
   const { user } = useContext(AuthContext);
   if (loading) return <p>cargando noticias....</p>;
   if (error) return <ErrorMessage message={error} />;
-
+ console.log(news);
   return (
     <section>
       {user ? <NewNew addNew={addNew} /> : null}
