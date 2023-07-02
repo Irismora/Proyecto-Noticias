@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getAllNewsService } from "../service";
 import { getUserNewsService } from "../service";
+import { AuthContext } from "../context/AuthContext";
 
 const useNews = (id) => {
+  const { token } = useContext(AuthContext);
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
