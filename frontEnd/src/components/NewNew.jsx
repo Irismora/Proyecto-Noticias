@@ -9,6 +9,8 @@ export const NewNew = ({ addNew }) => {
   const [photo, setPhoto] = useState(null);
 
   const handleForm = async (e) => {
+
+
     e.preventDefault();
 
     try {
@@ -34,7 +36,8 @@ export const NewNew = ({ addNew }) => {
         <label htmlFor="title">Titulo</label>
         <input type="text" name="title" id="title" required />
       </fieldset>
-      {/*  <fieldset>
+      
+      <fieldset>
         <label htmlFor="photo">Photo (optional)</label>
         <input
           type="file"
@@ -42,17 +45,18 @@ export const NewNew = ({ addNew }) => {
           id="photo"
           accept={"image/*"}
           onChange={(e) => setPhoto(e.target.files[0])}
+            multiple={false}
         />
         {photo ? (
           <figure>
             <img
-              src={URL.createObjectURL(image)}
+              src={URL.createObjectURL(photo)}
               style={{ width: "100px" }}
               alt="Preview"
             />
           </figure>
         ) : null}
-      </fieldset> */}
+      </fieldset>
 
       <fieldset>
         <label htmlFor="summery">Summery</label>
@@ -75,3 +79,4 @@ export const NewNew = ({ addNew }) => {
     </form>
   );
 };
+
