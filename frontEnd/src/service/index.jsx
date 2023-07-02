@@ -1,12 +1,4 @@
 export const getAllNewsService = async () => {
-<<<<<<< HEAD
-=======
- /*  const token = localStorage.getItem("token"); */
-<<<<<<< HEAD
->>>>>>> 0042847 (ListNewsSinToken)
-=======
->>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
->>>>>>> 417ce9bd4e1a49ab7a3b724217a95d727e782d32
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND}/listFilterNews`
   );
@@ -69,7 +61,6 @@ export const getMyDataService = async (token) => {
   return json.data;
 };
 
-<<<<<<< HEAD
 export const deleteNoticiaService = async ({ id, token }) => {
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND}/noticia/${id}`,
@@ -88,8 +79,6 @@ export const deleteNoticiaService = async ({ id, token }) => {
   }
 };
 
-=======
->>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
 export const sendNewService = async ({ data, token }) => {
   const response = await fetch(`${import.meta.env.VITE_BACKEND}/newNews`, {
     method: "POST",
@@ -108,7 +97,6 @@ export const sendNewService = async ({ data, token }) => {
   return json.data;
 };
 
-<<<<<<< HEAD
 //en linea 95 no pone ruta, nosotros tenemos newnews, en authoritation el lo tiene sin bearer
 
 export const getFilteredNewsService = async (token) => {
@@ -140,31 +128,14 @@ export const getSingleNewService = async (id) => {
 };
 
 export const addPhotoService = async (id, data, token) => {
-=======
-export const getFilteredNewsService = async ( ) => {
-<<<<<<< HEAD
->>>>>>> 0042847 (ListNewsSinToken)
-=======
->>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
->>>>>>> 417ce9bd4e1a49ab7a3b724217a95d727e782d32
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND}/News/${id}/photo`,
     {
-<<<<<<< HEAD
       method: "POST",
       body: data,
       headers: {
         Authorization: "Bearer " + token,
       },
-=======
-     /*  headers: {
-        Authorization: `Bearer ${token}`,
-      }, */
-<<<<<<< HEAD
->>>>>>> 0042847 (ListNewsSinToken)
-=======
->>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
->>>>>>> 417ce9bd4e1a49ab7a3b724217a95d727e782d32
     }
   );
 
@@ -176,14 +147,13 @@ export const getFilteredNewsService = async ( ) => {
 
   return json.data;
 };
-<<<<<<< HEAD
-=======
 
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* export const getAllEntriesWithVotesService = async () => {
-  const response = await fetch(
-    `${import.meta.env.VITE_BACKEND}//listFilterNews`
-  );
+export const getUserNewsService = async (token) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}/profile`, {
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
 
   const json = await response.json();
 
@@ -191,6 +161,5 @@ export const getFilteredNewsService = async ( ) => {
     throw new Error(json.message);
   }
 
-  return json.data;
-}; */
->>>>>>> 0042847 (ListNewsSinToken)
+  return json.user;
+};
