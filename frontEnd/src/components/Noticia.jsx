@@ -32,7 +32,7 @@ export const Noticia = ({ noticia, removeNoticia }) => {
       ) : null}
 
       <p>
-        By <Link to={`/user/${noticia.user_id}`}>{noticia.email}</Link> on{" "}
+        By <Link to={`/profile`}>{user.username}</Link> on{" "}
         <Link to={`/noticia/${noticia.id}`}>
           {new Date(noticia.created_at).toLocaleString()}
         </Link>

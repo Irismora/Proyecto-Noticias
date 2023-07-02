@@ -9,6 +9,7 @@ import Registro from "./pages/Register";
 import Login from "./pages/Login";
 import NoticiasId from "./pages/NoticiaId";
 import NotFound from "./pages/NotFound";
+import UserPage from "./pages/UserPage";
 
 //el tiene aqui importado tweetpage que es lo que representa nuestra Userpage pero nosotros no la tenemos!!!
 
@@ -21,6 +22,7 @@ function App() {
         <Route path="/register" element={<Registro />} />
         <Route path="/login" element={<Login />} />
         <Route path="/noticia/:id" element={<NoticiasId />} />
+        <Route path="/profile" element={<UserPage />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

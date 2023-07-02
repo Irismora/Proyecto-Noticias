@@ -15,8 +15,7 @@ const HomePage = () => {
     <section>
       {user ? <NewNew addNew={addNew} /> : null}
       <h1>Ultimas Noticias</h1>
-      <NoticiaList news={news} removeNoticia={removeNoticia} /> // Pasa las
-      noticias al componente NewsList
+      <NoticiaList news={news} removeNoticia={removeNoticia} />
     </section>
   );
 };
