@@ -1,8 +1,4 @@
 export const getAllNewsService = async () => {
-<<<<<<< HEAD
-=======
- /*  const token = localStorage.getItem("token"); */
->>>>>>> 0042847 (ListNewsSinToken)
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND}/listFilterNews`
   );
@@ -101,7 +97,6 @@ export const sendNewService = async ({ data, token }) => {
   return json.data;
 };
 
-<<<<<<< HEAD
 //en linea 95 no pone ruta, nosotros tenemos newnews, en authoritation el lo tiene sin bearer
 
 export const getFilteredNewsService = async (token) => {
@@ -133,23 +128,14 @@ export const getSingleNewService = async (id) => {
 };
 
 export const addPhotoService = async (id, data, token) => {
-=======
-export const getFilteredNewsService = async ( ) => {
->>>>>>> 0042847 (ListNewsSinToken)
   const response = await fetch(
     `${import.meta.env.VITE_BACKEND}/News/${id}/photo`,
     {
-<<<<<<< HEAD
       method: "POST",
       body: data,
       headers: {
         Authorization: "Bearer " + token,
       },
-=======
-     /*  headers: {
-        Authorization: `Bearer ${token}`,
-      }, */
->>>>>>> 0042847 (ListNewsSinToken)
     }
   );
 
@@ -162,30 +148,6 @@ export const getFilteredNewsService = async ( ) => {
   return json.data;
 };
 
-<<<<<<< HEAD
-export const getUserNewsService = async (token) => {
-  const response = await fetch(`${import.meta.env.VITE_BACKEND}/profile`, {
-    headers: {
-      Authorization: "Bearer " + token,
-    },
-  });
-=======
-/* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
-/* export const getAllEntriesWithVotesService = async () => {
-  const response = await fetch(
-    `${import.meta.env.VITE_BACKEND}//listFilterNews`
-  );
->>>>>>> 0042847 (ListNewsSinToken)
-
-  const json = await response.json();
-
-  if (!response.ok) {
-    throw new Error(json.message);
-  }
-
-  return json.data;
-}; */
-<<<<<<< HEAD
 export const getUserNewsService = async (token) => {
   const response = await fetch(`${import.meta.env.VITE_BACKEND}/profile`, {
     headers: {
@@ -201,5 +163,3 @@ export const getUserNewsService = async (token) => {
 
   return json.user;
 };
-=======
->>>>>>> 0042847 (ListNewsSinToken)
