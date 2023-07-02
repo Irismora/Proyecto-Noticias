@@ -10,11 +10,9 @@ const useNews = (idid) => {
     const loadNews = async () => {
       try {
         setLoading(true);
-  const data = id
+        const data = id
           ? await getUserNewsService(id)
           : await getAllNewsService();
-
-        
 
         setNews(data);
       } catch (error) {
@@ -34,14 +32,9 @@ const useNews = (idid) => {
     setNews(news.filter((noticia) => noticia.id !== id));
   };
 
-<<<<<<< HEAD
   return { news, loading, error, removeNoticia, addNew };
-=======
+
   return { news, loading, error, addNew };
 };
 /* Permite agregar un elemento lista de noticias */
-<<<<<<< HEAD
-/* Permite agregar un elemento lista de noticias */
-=======
->>>>>>> 0042847 (ListNewsSinToken)
 export default useNews;
