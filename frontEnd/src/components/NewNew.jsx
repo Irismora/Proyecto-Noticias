@@ -14,10 +14,6 @@ export const NewNew = ({ addNew }) => {
   /*   const [image, setImage] = useState(null);
    */
 >>>>>>> 0042847 (ListNewsSinToken)
-=======
-  /*   const [image, setImage] = useState(null);
-   */
->>>>>>> 0042847 (ListNewsSinToken)
   const handleForm = async (e) => {
     e.preventDefault();
 
@@ -30,8 +26,15 @@ export const NewNew = ({ addNew }) => {
       
        window.location.reload();   /* OJO CON ESTO NO ES EFICIENTE*/
       addNew(news);
+<<<<<<< HEAD
+<<<<<<< HEAD
+      e.target.reset();
+      setPhoto(null);
+=======
     
       
+<<<<<<< HEAD
+>>>>>>> 0042847 (ListNewsSinToken)
     } catch (error) {
       setError(error.message);
     } finally {
