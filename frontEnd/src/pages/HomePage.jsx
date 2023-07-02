@@ -9,10 +9,16 @@ import { NoticiaList } from "../components/NoticiaList";
 
 =======
 import { NewsList } from "../components/NewList"
+<<<<<<< HEAD
 >>>>>>> 0042847 (ListNewsSinToken)
 =======
+<<<<<<< HEAD
 import { NewsList } from "../components/NewList"
 >>>>>>> 0042847 (ListNewsSinToken)
+=======
+>>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
+>>>>>>> 417ce9bd4e1a49ab7a3b724217a95d727e782d32
+>>>>>>> 53f8f8cd32c305db100e66c9b8ea2de6f488514e
 const HomePage = () => {
   const { news, loading, error, addNew, removeNoticia } = useNews();
   const { user } = useContext(AuthContext);
@@ -49,9 +55,16 @@ const HomePage = () => {
         <p>No se encontraron noticias</p>
       )}
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> 0042847 (ListNewsSinToken)
 =======
+=======
+>>>>>>> 53f8f8cd32c305db100e66c9b8ea2de6f488514e
 >>>>>>> 0042847 (ListNewsSinToken)
+=======
+
+>>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
+>>>>>>> 417ce9bd4e1a49ab7a3b724217a95d727e782d32
     </section>
   );
 };

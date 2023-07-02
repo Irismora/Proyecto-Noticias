@@ -26,6 +26,10 @@ const useNews = (id) => {
     loadNews();
   }, [id]);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
   const addNew = (data) => {
     setNews([data, ...news]);
   };
@@ -34,7 +38,12 @@ const useNews = (id) => {
   const removeNoticia = (id) => {
     setNews(news.filter((noticia) => noticia.id !== id));
   };
+=======
+  return { news, loading, error, addNew };
 
+>>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
+
+<<<<<<< HEAD
   return { news, loading, error, removeNoticia, addNew };
 =======
   return { news, loading, error, addNew };
@@ -42,6 +51,8 @@ const useNews = (id) => {
 >>>>>>> 0042847 (ListNewsSinToken)
 =======
 >>>>>>> 0042847 (ListNewsSinToken)
+=======
+>>>>>>> 417ce9bd4e1a49ab7a3b724217a95d727e782d32
 };
 /* Permite agregar un elemento lista de noticias */
 export default useNews;

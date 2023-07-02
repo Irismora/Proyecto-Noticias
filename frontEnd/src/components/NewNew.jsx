@@ -14,10 +14,6 @@ export const NewNew = ({ addNew }) => {
   /*   const [image, setImage] = useState(null);
    */
 >>>>>>> 0042847 (ListNewsSinToken)
-=======
-  /*   const [image, setImage] = useState(null);
-   */
->>>>>>> 0042847 (ListNewsSinToken)
   const handleForm = async (e) => {
     e.preventDefault();
 
@@ -35,10 +31,7 @@ export const NewNew = ({ addNew }) => {
 =======
     
       
->>>>>>> 0042847 (ListNewsSinToken)
-=======
-    
-      
+<<<<<<< HEAD
 >>>>>>> 0042847 (ListNewsSinToken)
     } catch (error) {
       setError(error.message);
