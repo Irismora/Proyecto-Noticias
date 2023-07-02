@@ -12,7 +12,11 @@ export const NewNew = ({ addNew }) => {
 =======
   /*   const [image, setImage] = useState(null);
    */
+<<<<<<< HEAD
 >>>>>>> 0042847 (ListNewsSinToken)
+=======
+>>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
+>>>>>>> 417ce9bd4e1a49ab7a3b724217a95d727e782d32
   const handleForm = async (e) => {
     e.preventDefault();
 
@@ -29,7 +33,11 @@ export const NewNew = ({ addNew }) => {
 =======
     
       
+<<<<<<< HEAD
 >>>>>>> 0042847 (ListNewsSinToken)
+=======
+>>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
+>>>>>>> 417ce9bd4e1a49ab7a3b724217a95d727e782d32
     } catch (error) {
       setError(error.message);
     } finally {
