@@ -30,6 +30,10 @@ const useNews = (id) => {
     loadNews();
   }, [id]);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
   const addNew = (data) => {
     setNews([data, ...news]);
   };
@@ -38,7 +42,12 @@ const useNews = (id) => {
   const removeNoticia = (id) => {
     setNews(news.filter((noticia) => noticia.id !== id));
   };
+=======
+  return { news, loading, error, addNew };
 
+>>>>>>> 5ab62fe538df466cce713fe02adac75cfe13e63c
+
+<<<<<<< HEAD
   return { news, loading, error, removeNoticia, addNew };
 =======
   return { news, loading, error, addNew };
