@@ -23,16 +23,20 @@ export const Noticia = ({ noticia, removeNoticia }) => {
 
   return (
     <article className="noticia">
-      <p>{noticia.text}</p>
-      {noticia.image ? (
+      <p>{noticia.title}</p>
+      {noticia.photo ? (
         <img
-          src={`${import.meta.env.VITE_BACKEND}/uploads/${noticia.image}`}
-          alt={noticia.text}
+          src={`${import.meta.env.VITE_BACKEND}/../noticiasDefinitivo/static/photos/${noticia.photo}`}
+          alt={noticia.title}
         />
-      ) : null}
+      ) : ( "No hay foto" )}
+
+      {/* Problema en esta parte del codigo  por la ruta se sube como http://localhost:3000/News/258/photo pero al recargar la pagina ntenta cargar la foto desde  
+      http://localhost:3000/noticiasDefinitivo/static/photos/0a541a23-8a3e-48fd-a0cb-4db040016166.jpg
+  */}
 
       <p>
-        By <Link to={`/user/${noticia.user_id}`}>{noticia.email}</Link> on{" "}
+        By <Link to={`/profile`}>{user.username}</Link> on{" "}
         <Link to={`/noticia/${noticia.id}`}>
           {new Date(noticia.created_at).toLocaleString()}
         </Link>

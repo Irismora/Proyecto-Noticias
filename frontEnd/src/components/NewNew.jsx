@@ -1,48 +1,29 @@
 import { useContext, useState } from "react";
 import { sendNewService } from "../service";
 import { AuthContext } from "../context/AuthContext";
+import { addPhotoService } from "../service/index";
 
 export const NewNew = ({ addNew }) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const { token } = useContext(AuthContext);
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
   const [photo, setPhoto] = useState(null);
 
-=======
-  /*   const [image, setImage] = useState(null);
-   */
->>>>>>> 0042847 (ListNewsSinToken)
-=======
-  /*   const [image, setImage] = useState(null);
-   */
->>>>>>> 0042847 (ListNewsSinToken)
   const handleForm = async (e) => {
     e.preventDefault();
-
+  
     try {
       setLoading(true);
       const data = new FormData(e.target);
       const news = await sendNewService({ data, token });
       
-       window.location.reload();   /* OJO CON ESTO NO ES EFICIENTE*/
-<<<<<<< HEAD
-      
-       window.location.reload();   /* OJO CON ESTO NO ES EFICIENTE*/
-=======
->>>>>>> 0042847 (ListNewsSinToken)
+         if (photo) {
+        await addPhotoService(news.id, data, token); // Llamar a la función addPhoto desde el archivo index.jsx
+      }
+      //window.location.reload();   /* OJO CON ESTO NO ES EFICIENTE*/
       addNew(news);
-<<<<<<< HEAD
-<<<<<<< HEAD
       e.target.reset();
       setPhoto(null);
-=======
-    
-      
-<<<<<<< HEAD
->>>>>>> 0042847 (ListNewsSinToken)
     } catch (error) {
       setError(error.message);
     } finally {
@@ -57,7 +38,8 @@ export const NewNew = ({ addNew }) => {
         <label htmlFor="title">Titulo</label>
         <input type="text" name="title" id="title" required />
       </fieldset>
-      {/*  <fieldset>
+      
+      <fieldset>
         <label htmlFor="photo">Photo (optional)</label>
         <input
           type="file"
@@ -65,17 +47,18 @@ export const NewNew = ({ addNew }) => {
           id="photo"
           accept={"image/*"}
           onChange={(e) => setPhoto(e.target.files[0])}
+            
         />
         {photo ? (
           <figure>
             <img
-              src={URL.createObjectURL(image)}
+              src={URL.createObjectURL(photo)}
               style={{ width: "100px" }}
               alt="Preview"
             />
           </figure>
         ) : null}
-      </fieldset> */}
+      </fieldset>
 
       <fieldset>
         <label htmlFor="summery">Summery</label>
@@ -98,3 +81,4 @@ export const NewNew = ({ addNew }) => {
     </form>
   );
 };
+

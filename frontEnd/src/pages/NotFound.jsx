@@ -1,5 +1,7 @@
 import { ErrorMessage } from "../components/ErrorMessage";
 
-export const NotFound = () => {
+const NotFound = () => {
   return <ErrorMessage message={"Page not found"} />;
 };
+
+export default NotFound

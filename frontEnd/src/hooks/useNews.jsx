@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getAllNewsService } from "../service";
+import { getUserNewsService } from "../service";
+import { AuthContext } from "../context/AuthContext";
 
-const useNews = (idid) => {
+const useNews = (id) => {
+  const { token } = useContext(AuthContext);
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -10,9 +13,11 @@ const useNews = (idid) => {
     const loadNews = async () => {
       try {
         setLoading(true);
-        const data = id
-          ? await getUserNewsService(id)
+  const data = id
+          ? await getUserNewsService(token)
           : await getAllNewsService();
+
+        
 
         setNews(data);
       } catch (error) {
@@ -32,9 +37,8 @@ const useNews = (idid) => {
     setNews(news.filter((noticia) => noticia.id !== id));
   };
 
-  return { news, loading, error, removeNoticia, addNew };
-
-  return { news, loading, error, addNew };
+  return {news, loading, error, addNew, removeNoticia};
 };
 /* Permite agregar un elemento lista de noticias */
 export default useNews;
+
