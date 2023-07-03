@@ -70,7 +70,7 @@ export const News = ({
           }/../noticiasDefinitivo/static/photos/${news.photo}`}
           alt={news.title}
         />
-      ) : null}
+      ) : ( "No hay foto" )}
       <p>Resumen: {news.summery}</p>
       <p>Texto: {news.newsText}</p>
       <p>Tema: {news.topic}</p>
