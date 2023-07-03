@@ -77,9 +77,9 @@ export const News = ({
       <p>Usuario: {news.idUser}</p>
       <p>Likes: {news.likes}</p>
       <p>Dislikes: {news.dislikes}</p>
-      {/* <p>
-        By <Link to={`/profile`}>{user.username}</Link>
-      </p> */}
+      <p>
+        By <Link to={`/profile`}>{user && user.id === news.idUser ?user.username : null}</Link>
+      </p>
       <section>
         {token && news.idUser !== id ? (
           <span>

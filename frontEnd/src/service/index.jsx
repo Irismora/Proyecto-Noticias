@@ -67,7 +67,7 @@ export const deleteNoticiaService = async ({ id, token }) => {
     {
       method: "DELETE",
       headers: {
-        Authorization: token,
+        Authorization: "Bearer " + token,
       },
     }
   );
@@ -98,7 +98,7 @@ export const sendNewService = async ({ data, token }) => {
 };
 
 
-export const getFilteredNewsService = async (token) => {
+export const getAllNewsTokenService = async (token) => {
   const response = await fetch(`${import.meta.env.VITE_BACKEND}/listNews`, {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -147,7 +147,7 @@ export const addPhotoService = async (id, data, token) => {
   return json.data;
 };
 
-export const getUserNewsService = async (token) => {
+export const getProfileService = async (token) => {
   const response = await fetch(`${import.meta.env.VITE_BACKEND}/profile`, {
     headers: {
       Authorization: "Bearer " + token,

@@ -17,8 +17,8 @@ export const NewNew = ({ addNew }) => {
       const data = new FormData(e.target);
       const news = await sendNewService({ data, token });
       
-         if (photo) {
-        await addPhotoService(news.id, data, token); // Llamar a la función addPhoto desde el archivo index.jsx
+        if (photo) {
+        await addPhotoService(news.id, data, token); 
       }
       addNew(news);
       e.target.reset();

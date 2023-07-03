@@ -3,13 +3,19 @@ import useUser from "../hooks/useUser";
 import { ErrorMessage } from "../components/ErrorMessage";
 import { Loading } from "../components/Loading";
 import UserNews from "../components/UserNews";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
+
 
 const UserPage = () => {
   const { id } = useParams();
-  const { user, loading, error } = useUser(id);
+  const { loading, error } = useUser();
+  const {user} =useContext(AuthContext);
 
   if (loading) return <Loading />;
   if (error) return <ErrorMessage message={error} />;
+
+  if (!user) return null;
 
   return (
     <section>
@@ -22,4 +28,4 @@ const UserPage = () => {
     </section>
   );
 };
- export default UserPage;
+  export default UserPage;
