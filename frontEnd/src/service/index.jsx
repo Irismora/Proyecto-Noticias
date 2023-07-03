@@ -199,12 +199,12 @@ export const disLikeService = async ({ id, token }) => {
   return json.data;
 };
 
-export const editNewService = async ({ id, token }) => {
+export const editNewService = async ({ id, token, title, summery, newsText, topic }) => {
   const response = await fetch(`${import.meta.env.VITE_BACKEND}/News/${id}`, {
     method: "PUT",
-    body: JSON.stringify({ title, photo, summery, Newstext, topic }),
+    body: JSON.stringify({ title, summery, newsText, topic }),
     headers: {
-      Authorization: "Bearer" + token,
+      Authorization: "Bearer " + token,
     },
   });
 

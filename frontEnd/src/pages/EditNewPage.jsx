@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { editNewService } from "../service";
+import useNew from "../hooks/useNew";
+import useNews from "../hooks/useNews";
 
 export const EditNewPage = () => {
   const { token } = useContext(AuthContext);
@@ -8,15 +10,18 @@ export const EditNewPage = () => {
   const [title, setTitle] = useState("");
   const [photo, setPhoto] = useState("");
   const [summery, setSummery] = useState("");
-  const [Newstext, setNewsText] = useState("");
+  const [newsText, setNewsText] = useState("");
   const [topic, setTopic] = useState("");
+  const [message, setMessage] = useState("");
+  const [idNew, setIdNew] = useState("");
+  const {news} = useNew();
 
   const handleForm = async (e) => {
     e.preventDefault();
 
     try {
-      await editNewService({ title, photo, summery, Newstext, topic, token });
-      setMessage(`Se ha editado correctamente la noticia con id ${idNew}`);
+      await editNewService({ idNew, token, title, summery, newsText, topic });
+      setMessage(`Se ha editado correctamente la noticia con id ${idNews}`); /* NO SE SI VA MEJOR EL ID  */
     } catch (error) {
       setError(error.message);
       setMessage("");
@@ -26,7 +31,7 @@ export const EditNewPage = () => {
     <section>
       <form className="edit-news" onSubmit={handleForm}>
         <fieldset>
-          <label htmlFor="datosNew">Datos para introducir en la Noticia:</label>
+          <label htmlFor="datosNew">Datos para introducir en la Noticia:</label> 
           <label htmlFor="title">titulo</label>
           <input
             type="text"
@@ -41,21 +46,22 @@ export const EditNewPage = () => {
         <fieldset>
           <label htmlFor="photo">photo</label>
           <input
-            type="image"
+            type="file"
             name="photo"
             id="photo"
-            value={ohoto}
+            value={photo}
             required
+            accept={"image/*"}
             onChange={(e) => setPhoto(e.target.value)}
           />
         </fieldset>
 
         <fieldset>
-          <label htmlFor="Summery">summery</label>
+          <label htmlFor="summery">summery</label>
           <input
             type="text"
-            name="Summery"
-            id="Summery"
+            name="summery"
+            id="summery"
             value={summery}
             required
             onChange={(e) => setSummery(e.target.value)}
@@ -63,12 +69,12 @@ export const EditNewPage = () => {
         </fieldset>
 
         <fieldset>
-          <label htmlFor="Newstext">Newstext</label>
+          <label htmlFor="newsText">newsText</label>
           <input
             type="text"
-            name="Newstext"
-            id="Newstext"
-            value={text}
+            name="newsText"
+            id="newsText"
+            value={newsText}
             required
             onChange={(e) => setNewsText(e.target.value)}
           />
