@@ -26,8 +26,8 @@ const useNew = (id) => {
   const addNew = (data) => {
     setNews([data, ...news]);
   };
-  
-  return { news, error, loading };
+
+  return { news, error, loading, addNew };
 };
 
 export default useNew;

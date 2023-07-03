@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { getAllNewsService } from "../service";
-import { getUserNewsService } from "../service";
+import { getAllNewsService, getAllNewsTokenService } from "../service";
 import { AuthContext } from "../context/AuthContext";
 
 const useNews = (id) => {
@@ -14,7 +13,7 @@ const useNews = (id) => {
       try {
         setLoading(true);
         const data = id
-          ? await getUserNewsService(token)
+          ? await getAllNewsTokenService(token)
           : await getAllNewsService();
 
         
@@ -27,7 +26,7 @@ const useNews = (id) => {
       }
     };
     loadNews();
-  }, [id]);
+  }, [id, token]);
 
   const addNew = (data) => {
     setNews([data, ...news]);

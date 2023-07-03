@@ -5,7 +5,7 @@ export const AuthContext = createContext(null);
 
 export const AuthContextProviderComponent = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem("token"));
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   const [idUser, setIdUser] = useState(localStorage.getItem("iduser"));
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export const AuthContextProviderComponent = ({ children }) => {
         setUser(data);
       } catch (error) {
         setToken("");
-        setUser(null);
+        setUser({});
       }
     };
 
