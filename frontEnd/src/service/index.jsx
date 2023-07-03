@@ -94,7 +94,7 @@ export const sendNewService = async ({ data, token }) => {
   return json.data;
 };
 
-export const getFilteredNewsService = async (token) => {
+export const getAllNewsTokenService = async (token) => {
   const response = await fetch(`${import.meta.env.VITE_BACKEND}/listNews`, {
     headers: {
       Authorization: `Bearer ${token}`,
