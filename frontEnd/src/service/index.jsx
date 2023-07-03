@@ -62,15 +62,12 @@ export const getMyDataService = async (token) => {
 };
 
 export const deleteNoticiaService = async ({ id, token }) => {
-  const response = await fetch(
-    `${import.meta.env.VITE_BACKEND}/News/${id}`,
-    {
-      method: "DELETE",
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    }
-  );
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}/News/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: "Bearer " + token,
+    },
+  });
 
   const json = await response.json();
 
