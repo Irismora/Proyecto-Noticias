@@ -14,7 +14,7 @@ const UserPage = () => {
   return (
     <section>
       <h1>User {user.username}</h1>
-      <section class="user-data">
+      <section className="user-data">
         <p>User id: {user.id}</p>
         <p>User mail: {user.email}</p>
       </section>

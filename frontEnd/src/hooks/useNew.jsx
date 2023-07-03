@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
 import { getSingleNewService } from "../service";
 
-const useNoticia = (id) => {
-  const [noticia, setNoticia] = useState([]);
+const useNew = (id) => {
+  const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
   useEffect(() => {
-    const loadNoticia = async () => {
+    const loadNew = async () => {
       try {
         setLoading(true);
         const data = await getSingleNewService(id);
 
-        setNoticia(data);
+        setNews(data);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -20,10 +20,15 @@ const useNoticia = (id) => {
       }
     };
 
-    loadNoticia();
+    loadNew();
   }, [id]);
 
-  return { noticia, error, loading };
+  const addNew = (data) => {
+    setNews([data, ...news]);
+  };
+  
+  return { news, error, loading };
 };
 
-export default useNoticia;
+export default useNew;
+

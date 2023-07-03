@@ -63,7 +63,7 @@ export const getMyDataService = async (token) => {
 
 export const deleteNoticiaService = async ({ id, token }) => {
   const response = await fetch(
-    `${import.meta.env.VITE_BACKEND}/noticia/${id}`,
+    `${import.meta.env.VITE_BACKEND}/News/${id}`,
     {
       method: "DELETE",
       headers: {
@@ -97,7 +97,6 @@ export const sendNewService = async ({ data, token }) => {
   return json.data;
 };
 
-//en linea 95 no pone ruta, nosotros tenemos newnews, en authoritation el lo tiene sin bearer
 
 export const getFilteredNewsService = async (token) => {
   const response = await fetch(`${import.meta.env.VITE_BACKEND}/listNews`, {
@@ -162,4 +161,44 @@ export const getUserNewsService = async (token) => {
   }
 
   return json.user;
+};
+
+export const likeService = async ({ id, token }) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND}/News/${id}/like`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
+export const disLikeService = async ({ id, token }) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND}/News/${id}/unlike`,
+    {
+      method: "POST",
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    }
+  );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
 };

@@ -1,12 +1,25 @@
-import { Noticia } from "./Noticia";
+import { News } from "./Noticia";
 
-export const NoticiaList = ({ news, removeNoticia }) => {
+export const NoticiaList = ({
+  news,
+  removeNoticia,
+  addLike, addDislike,
+  removeLike,
+  removeDislike,
+}) => {
   return news.length ? (
     <ul className="Noticia-list">
-      {news.map((noticia) => {
+      {news.map((news) => {
         return (
-          <li key={noticia.id}>
-            <Noticia noticia={noticia} removeNoticia={removeNoticia} />
+          <li key={news.id}>
+            <News
+              news={news}
+              addLike={addLike}
+              addDislike={addDislike}
+              removeLike={removeLike}
+              removeDislike={removeDislike}
+              removeNoticia={removeNoticia}
+            />
           </li>
         );
       })}

@@ -13,7 +13,7 @@ const useNews = (id) => {
     const loadNews = async () => {
       try {
         setLoading(true);
-  const data = id
+        const data = id
           ? await getUserNewsService(token)
           : await getAllNewsService();
 
@@ -33,11 +33,51 @@ const useNews = (id) => {
     setNews([data, ...news]);
   };
 
-  const removeNoticia = (id) => {
-    setNews(news.filter((noticia) => noticia.id !== id));
+  const removeNoticia = async (id) => {
+    try{
+      setNews(news.filter((news) => news.id !== id));
+    }catch (error){
+        setError(error.message);
+  }
+};
+
+  const addLike = (id) => {
+    const index = news.findIndex((newObject) => newObject.id === id);
+    news[index].likes++;
+    news[index].loggedUserLiked = true;
+    if (news[index].loggedUserDisliked) {
+      news[index].dislikes--;
+      news[index].loggedUserDisliked = false;
+    }
+    setNews([...news]);
   };
 
-  return {news, loading, error, addNew, removeNoticia};
+  const addDislike = (id) => {
+    const index = news.findIndex((newObject) => newObject.id === id);
+    news[index].dislikes++;
+    news[index].loggedUserDisliked = true;
+    if (news[index].loggedUserLiked) {
+      news[index].likes--;
+      news[index].loggedUserLiked = false;
+    }
+    setNews([...news]);
+  };
+
+  const removeLike = (id) => {
+    const index = news.findIndex((newObject) => newObject.id === id);
+    news[index].likes--;
+    news[index].loggedUserLiked = false;
+    setNews([...news]);
+  };
+
+  const removeDislike = (id) => {
+    const index = news.findIndex((newObject) => newObject.id === id);
+    news[index].dislikes--;
+    news[index].loggedUserDisliked = false;
+    setNews([...news]);
+  };
+
+  return {news, loading, error, addNew, removeNoticia, addLike, addDislike, removeLike, removeDislike};
 };
-/* Permite agregar un elemento lista de noticias */
+
 export default useNews;
