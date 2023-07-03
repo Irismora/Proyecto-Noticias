@@ -65,7 +65,7 @@ export const deleteNoticiaService = async ({ id, token }) => {
   const response = await fetch(`${import.meta.env.VITE_BACKEND}/News/${id}`, {
     method: "DELETE",
     headers: {
-      Authorization: token,
+      Authorization: "Bearer " + token,
     },
   });
 
