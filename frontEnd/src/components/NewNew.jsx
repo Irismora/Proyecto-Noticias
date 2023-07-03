@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { sendNewService } from "../service";
 import { AuthContext } from "../context/AuthContext";
+import { addPhotoService } from "../service/index";
 
 export const NewNew = ({ addNew }) => {
   const [error, setError] = useState("");
@@ -9,15 +10,16 @@ export const NewNew = ({ addNew }) => {
   const [photo, setPhoto] = useState(null);
 
   const handleForm = async (e) => {
-
-
     e.preventDefault();
-
+  
     try {
       setLoading(true);
       const data = new FormData(e.target);
       const news = await sendNewService({ data, token });
       
+         if (photo) {
+        await addPhotoService(news.id, data, token); // Llamar a la función addPhoto desde el archivo index.jsx
+      }
       addNew(news);
       e.target.reset();
       setPhoto(null);
@@ -44,7 +46,7 @@ export const NewNew = ({ addNew }) => {
           id="photo"
           accept={"image/*"}
           onChange={(e) => setPhoto(e.target.files[0])}
-            multiple={false}
+            
         />
         {photo ? (
           <figure>
