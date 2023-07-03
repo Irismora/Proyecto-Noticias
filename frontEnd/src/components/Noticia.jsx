@@ -3,7 +3,6 @@ import { useContext, useState } from "react";
 import {
   deleteNoticiaService,
   disLikeService,
-  editNewService,
   likeService,
 } from "../service";
 import { AuthContext } from "../context/AuthContext";
@@ -21,18 +20,7 @@ export const News = ({
   const { token, user, idUser } = useContext(AuthContext);
   const [error, setError] = useState("");
 
-  const editNewPage = async (id) => {
-    try {
-      await editNewService({ id, token });
-      if (EditNewPage) {
-        editNewPage(id);
-      } else {
-        navigate("/");
-      }
-    } catch (error) {
-      setError(error.message);
-    }
-  };
+   
 
   const deleteNoticia = async (id) => {
     try {
@@ -133,6 +121,23 @@ export const News = ({
           {error ? <p>{error}</p> : null}
         </section>
       ) : null}
+
+
+      {user && 
+user.id
+ === news.idUser ? (
+  <section>
+    <button
+      onClick={() => {
+        // Redirige al usuario a la ruta de edición
+        window.location.href = "/editNew";
+      }}
+    >
+      Editar Noticia
+    </button>
+    {error ? <p>{error}</p> : null}
+  </section>
+) : null} 
     </article>
   );
 };
