@@ -1,6 +1,11 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
-import { deleteNoticiaService, disLikeService, likeService } from "../service";
+import {
+  deleteNoticiaService,
+  disLikeService,
+  editNewService,
+  likeService,
+} from "../service";
 import { AuthContext } from "../context/AuthContext";
 import useNew from "../hooks/useNew";
 
@@ -15,6 +20,19 @@ export const News = ({
   const navigate = useNavigate();
   const { token, user, idUser } = useContext(AuthContext);
   const [error, setError] = useState("");
+
+  const editNewPage = async (id) => {
+    try {
+      await editNewService({ id, token });
+      if (EditNewPage) {
+        editNewPage(id);
+      } else {
+        navigate("/");
+      }
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
   const deleteNoticia = async (id) => {
     try {
@@ -57,7 +75,6 @@ export const News = ({
 
   let id = Number(idUser);
 
-
   return (
     <article className="noticia" id={news.id}>
       <p>
@@ -70,7 +87,9 @@ export const News = ({
           }/../noticiasDefinitivo/static/photos/${news.photo}`}
           alt={news.title}
         />
-      ) : ( "No hay foto" )}
+      ) : (
+        "No hay foto"
+      )}
       <p>Resumen: {news.summery}</p>
       <p>Texto: {news.newsText}</p>
       <p>Tema: {news.topic}</p>
@@ -117,4 +136,3 @@ export const News = ({
     </article>
   );
 };
-

@@ -3,7 +3,9 @@ import { News } from "./Noticia";
 export const NoticiaList = ({
   news,
   removeNoticia,
-  addLike, addDislike,
+  EditNewPage,
+  addLike,
+  addDislike,
   removeLike,
   removeDislike,
 }) => {
@@ -17,6 +19,7 @@ export const NoticiaList = ({
               addLike={addLike}
               addDislike={addDislike}
               removeLike={removeLike}
+              EditNewPage={EditNewPage}
               removeDislike={removeDislike}
               removeNoticia={removeNoticia}
             />

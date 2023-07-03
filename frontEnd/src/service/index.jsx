@@ -62,15 +62,12 @@ export const getMyDataService = async (token) => {
 };
 
 export const deleteNoticiaService = async ({ id, token }) => {
-  const response = await fetch(
-    `${import.meta.env.VITE_BACKEND}/News/${id}`,
-    {
-      method: "DELETE",
-      headers: {
-        Authorization: "Bearer " + token,
-      },
-    }
-  );
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}/News/${id}`, {
+    method: "DELETE",
+    headers: {
+      Authorization: token,
+    },
+  });
 
   const json = await response.json();
 
@@ -96,7 +93,6 @@ export const sendNewService = async ({ data, token }) => {
 
   return json.data;
 };
-
 
 export const getAllNewsTokenService = async (token) => {
   const response = await fetch(`${import.meta.env.VITE_BACKEND}/listNews`, {
@@ -193,6 +189,24 @@ export const disLikeService = async ({ id, token }) => {
       },
     }
   );
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
+export const editNewService = async ({ id, token }) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}/News/${id}`, {
+    method: "PUT",
+    body: JSON.stringify({ title, photo, summery, Newstext, topic }),
+    headers: {
+      Authorization: "Bearer" + token,
+    },
+  });
 
   const json = await response.json();
 
