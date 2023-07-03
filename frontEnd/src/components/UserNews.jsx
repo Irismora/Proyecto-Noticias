@@ -4,7 +4,8 @@ import { ErrorMessage } from "./ErrorMessage";
 import { NoticiaList } from "./NoticiaList";
 
 const UserNews = ({ id }) => {
-  const { news, loading, error, removeNoticia, EditNewPage } = useNews(id);
+  const { loading, error, removeNoticia, EditNewPage } = useNews(id);
+  const { news } = useUser();
 
   if (loading) return <p>Cargando noticias...</p>;
   if (error) return <ErrorMessage message={error} />;
