@@ -7,9 +7,10 @@ require("dotenv").config();
 
 // Importamos las variables de entorno que hemos creado para la conexión
 
+// Declaramos un pool de conexiones
+let pool;
+
 const getDB = async () => {
-  // Declaramos un pool de conexiones
-  let pool;
 
   try {
     if (!pool) {
@@ -23,9 +24,10 @@ const getDB = async () => {
         port: process.env.DB_PORT,
         timezone: "Z",
       });
-      // Ejecutamos el método getConnection para devolver una conexion libre
-      return await pool.getConnection();
     }
+
+    // Ejecutamos el método getConnection para devolver una conexion libre
+    return await pool.getConnection();
   } catch (error) {
     console.error(error.message);
   }

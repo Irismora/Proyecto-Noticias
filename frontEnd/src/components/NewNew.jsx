@@ -16,11 +16,20 @@ export const NewNew = ({ addNew }) => {
       setLoading(true);
       const data = new FormData(e.target);
       const news = await sendNewService({ data, token });
+
+     // console.log(news)
+
+      let newPhoto;
       
-        if (photo) {
-        await addPhotoService(news.id, data, token); 
+      if (photo) {
+        const upload = await addPhotoService(news.id, data, token); 
+
+        newPhoto = upload.photo;
       }
-      addNew(news);
+
+
+      const newItem = photo ? {...news, photo: newPhoto} : news;
+      addNew(newItem);
       e.target.reset();
       setPhoto(null);
     } catch (error) {

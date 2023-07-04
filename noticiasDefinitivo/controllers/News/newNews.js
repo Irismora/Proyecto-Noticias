@@ -50,6 +50,8 @@ const newNews = async (req, res, next) => {
         photo: null,
         loggedUserDisliked: 0,
         loggedUserLiked: 0,
+
+        //NOTA: meter aqui el campo username y los datos de usuario que necesiteis
       },
     });
   } catch (error) {

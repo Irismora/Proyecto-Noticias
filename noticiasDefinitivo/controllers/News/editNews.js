@@ -8,7 +8,7 @@ const editNews = async (req, res, next) => {
   try {
     connection = await getDB();
     // Recuperamos el id del usuario logueado
-    const idUserAuth = req.userAuth.id;
+    //const idUserAuth = req.userAuth.id;
 
     // Validamos los datos que recuperamos en el cuerpo de la petición con el schema de newsSchema
     await validateSchema(newsSchema, req.body);
