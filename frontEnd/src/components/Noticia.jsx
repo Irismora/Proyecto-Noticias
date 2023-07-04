@@ -72,7 +72,7 @@ export const News = ({
         <img
           src={`${
             import.meta.env.VITE_BACKEND
-          }/../noticiasDefinitivo/static/photos/${news.photo}`}
+          }../../../noticiasDefinitivo/static/photos${news.photo}`}
           alt={news.title}
         />
       ) : (
