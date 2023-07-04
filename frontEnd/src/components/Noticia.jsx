@@ -72,9 +72,10 @@ export const News = ({
         <img
           src={`${
             import.meta.env.VITE_BACKEND
-          }../../../noticiasDefinitivo/static/photos${news.photo}`}
+          }/photos/${news.photo}`}
           alt={news.title}
         />
+       /*  /News/${news.idUser}/photo */
       ) : (
         "No hay foto"
       )}

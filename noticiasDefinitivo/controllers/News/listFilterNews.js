@@ -19,10 +19,11 @@ const listFilterUserNews = async (req, res, next) => {
     // Validamos los datos que recuperamos en el cuerpo de la petición con el schema de filterThemeSchema
     await validateSchema(filterThemeSchema, req.query);
 
-    let sqlQuery = `SELECT n.*, COUNT(DISTINCT l.id) AS likes, COUNT(DISTINCT u.id) AS dislikes 
+    let sqlQuery = `SELECT n.*, user.username, user.email, COUNT(DISTINCT l.id) AS likes, COUNT(DISTINCT u.id) AS dislikes 
                     FROM news n 
                     LEFT JOIN user_like_news l ON n.id = l.idNews 
                     LEFT JOIN user_unlike_news u ON n.id = u.idNews
+                    LEFT JOIN user ON n.idUser = user.id
                     GROUP BY n.id ORDER BY n.id DESC`;
 
     // Recuperamos los datos de las noticias guardadas en la base de datos

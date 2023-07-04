@@ -61,7 +61,7 @@ const addLikesNews = async (req, res, next) => {
             res.send({
                 status: 'ok',
                 message: 'Se le ha quitado el like a la noticia',
-                data: { liked: false },
+                data: { liked: false/* , likes: 3, unlikes: 5, nota_berto: "esto es falso, hacer que sea correcto"  */},
             });
         }
     } catch (error) {
