@@ -204,7 +204,7 @@ export const editNewService = async ({ id, token }) => {
     method: "PUT",
     body: JSON.stringify({ title, photo, summery, Newstext, topic }),
     headers: {
-      Authorization: "Bearer" + token,
+      Authorization: "Bearer " + token,
     },
   });
 
