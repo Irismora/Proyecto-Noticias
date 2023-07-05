@@ -64,81 +64,86 @@ export const News = ({
   let id = Number(idUser);
 
   return (
-    <article className="noticia" id={news.id}>
-      <p>
-        <Link to={`/news/${news.id}`}>Título: {news.title}</Link>
-      </p>
-      {news.photo ? (
-        <img
-          src={`${
-            import.meta.env.VITE_BACKEND
-          }/photos/${news.photo}`}
-          alt={news.title}
-        />
-       /*  /News/${news.idUser}/photo */
-      ) : (
-        "No hay foto"
-      )}
-      <p>Resumen: {news.summery}</p>
-      <p>Texto: {news.newsText}</p>
-      <p>Tema: {news.topic}</p>
-      <p>Usuario: {news.idUser}</p>
-      <p>Likes: {news.likes}</p>
-      <p>Dislikes: {news.dislikes}</p>
-      <p>
-        By <Link to={`/profile`}>{user && user.id === news.idUser ?user.username : null}</Link>
-      </p>
-      <section>
-        {token && news.idUser !== id ? (
-          <span>
-            <button
-              className={news.loggedUserLiked ? "liked" : ""}
-              onClick={() => {
-                like(news.id);
-              }}
-            >
-              👍
-            </button>
-            <button
-              className={news.loggedUserDisliked ? "disliked" : ""}
-              onClick={() => {
-                disLike(news.id);
-              }}
-            >
-              👎
-            </button>
-          </span>
-        ) : null}
-      </section>
-      {user && user.id === news.idUser ? (
-        <section>
-          <button
-            onClick={() => {
-              if (window.confirm("Are you sure?")) deleteNoticia(news.id);
-            }}
-          >
-            Delete Noticia
-          </button>
-          {error ? <p>{error}</p> : null}
-        </section>
-      ) : null}
+    <ul className="news-list">
+      <li>
+        <article className="news" id={news.id}>
+          <p>
+            <Link to={`/news/${news.id}`}>Título: {news.title}</Link>
+          </p>
+          <section className="photoNew">
+            {news.photo ? (
+              <img
+                src={`${import.meta.env.VITE_BACKEND}/photos/${news.photo}`}
+                alt={news.title}
+              />
+            ) : (
+              /*  /News/${news.idUser}/photo */
+              "No hay foto"
+            )}
+          </section>
+          <p>Resumen: {news.summery}</p>
+          <p>Texto: {news.newsText}</p>
+          <p>Tema: {news.topic}</p>
+          <p>Usuario: {news.idUser}</p>
+          <p>Likes: {news.likes}</p>
+          <p>Dislikes: {news.dislikes}</p>
+          <p>
+            By{" "}
+            <Link to={`/profile`}>
+              {user && user.id === news.idUser ? user.username : null}
+            </Link>
+          </p>
+          <section>
+            {token && news.idUser !== id ? (
+              <span className="likebutton">
+                <button
+                  className={news.loggedUserLiked ? "liked" : ""}
+                  onClick={() => {
+                    like(news.id);
+                  }}
+                >
+                  <div className="emoji">👍</div>
+                </button>
+                <button
+                  className={news.loggedUserDisliked ? "disliked" : ""}
+                  onClick={() => {
+                    disLike(news.id);
+                  }}
+                >
+                  <div className="emoji">👎</div>
+                </button>
+              </span>
+            ) : null}
+          </section>
+          {user && user.id === news.idUser ? (
+            <section>
+              <button
+                className="DelButton"
+                onClick={() => {
+                  if (window.confirm("Are you sure?")) deleteNoticia(news.id);
+                }}
+              >
+                Delete Noticia
+              </button>
+              {error ? <p>{error}</p> : null}
+            </section>
+          ) : null}
 
-
-      {user && 
-user.id
- === news.idUser ? (
-  <section>
-    <button
-      onClick={() => {
-        // Redirige al usuario a la ruta de edición
-        window.location.href = "/editNew";
-      }}
-    >
-      Editar Noticia
-    </button>
-    {error ? <p>{error}</p> : null}
-  </section>
-) : null} 
-    </article>
+          {user && user.id === news.idUser ? (
+            <section>
+              <button className="EditButton"
+                onClick={() => {
+                  // Redirige al usuario a la ruta de edición
+                  window.location.href = "/editNew";
+                }}
+              >
+                Editar Noticia
+              </button>
+              {error ? <p>{error}</p> : null}
+            </section>
+          ) : null}
+        </article>
+      </li>
+    </ul>
   );
 };
