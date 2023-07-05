@@ -8,12 +8,12 @@ const getDB = require("../../db/getDB");
 const { validateSchema } = require("../../helpers");
 const newsSchema = require("../../schemas/newsSchema");
 
-//Creamos la funcion crear una noticia
+// Creamos la función para crear una noticia
 const newNews = async (req, res, next) => {
   let connection;
 
   try {
-    // Creamos una conexion con la base de datos
+    // Creamos una conexión con la base de datos
     connection = await getDB();
 
     // Recuperamos el id del usuario logueado
@@ -22,19 +22,27 @@ const newNews = async (req, res, next) => {
     // Validamos los datos que recuperamos en el cuerpo de la petición con el schema de newsSchema
     await validateSchema(newsSchema, req.body);
 
-    // Destructuramos los datos de la noticia del cuerpo de la peticion
+    // Destructuramos los datos de la noticia del cuerpo de la petición
     const { title, summery, newsText, topic } = req.body;
 
     // Insertamos los datos de la noticia en la base de datos
     const [data] = await connection.query(
       `
-            INSERT INTO news(title,photo,summery,newsText,topic,idUser)
-            VALUES (?, ?, ?, ?, ?,?)
-        `,
+        INSERT INTO news(title,photo,summery,newsText,topic,idUser)
+        VALUES (?, ?, ?, ?, ?, ?)
+      `,
       [title, null, summery, newsText, topic, idUserAuth]
     );
 
-    // Respondemos con las datos de la noticia insertada
+    // Obtenemos los datos del usuario
+    const [user] = await connection.query(
+      `
+        SELECT username, email FROM user WHERE id = ?
+      `,
+      [idUserAuth]
+    );
+
+    // Respondemos con los datos de la noticia insertada y los datos del usuario
     res.send({
       status: "Ok",
       message: "¡Noticia creada correctamente!",
@@ -50,8 +58,8 @@ const newNews = async (req, res, next) => {
         photo: null,
         loggedUserDisliked: 0,
         loggedUserLiked: 0,
-
-        //NOTA: meter aqui el campo username y los datos de usuario que necesiteis
+        username: user[0].username,
+        email: user[0].email,
       },
     });
   } catch (error) {
@@ -61,5 +69,5 @@ const newNews = async (req, res, next) => {
   }
 };
 
-// Exportamos la funcion
+// Exportamos la función
 module.exports = newNews;

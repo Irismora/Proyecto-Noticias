@@ -22,16 +22,19 @@ const listNews = async (req, res, next) => {
     // Obtenemos los campos necesarios del req.body
     const { topic } = req.query;
 
-    let sqlQuery = `SELECT n.*, COUNT(DISTINCT l.id) likes, COUNT(DISTINCT u.id) dislikes 
-                    FROM news n 
-                    LEFT JOIN user_like_news l ON n.id=l.idNews 
-                    LEFT JOIN user_unlike_news u ON n.id=u.idNews`;
+let sqlQuery = `SELECT n.*, ul.username, ul.email, COUNT(DISTINCT l.id) AS likes, COUNT(DISTINCT un.id) AS dislikes 
+                FROM news n 
+                LEFT JOIN user_like_news l ON n.id = l.idNews 
+                LEFT JOIN user_unlike_news un ON n.id = un.idNews
+                LEFT JOIN user ul ON n.idUser = ul.id`;
 
-    if (topic) {
-      sqlQuery += " WHERE topic=?";
-    }
+if (topic) {
+  sqlQuery += " WHERE topic = ?";
+}
 
-    sqlQuery += " GROUP BY n.id ORDER BY n.id DESC";
+sqlQuery += " GROUP BY n.id ORDER BY n.id DESC";
+
+
 
     // Recuperamos los datos de las noticias guardadas en la base de datos
     const [news] = await connection.query(sqlQuery, topic ? [topic] : []);
