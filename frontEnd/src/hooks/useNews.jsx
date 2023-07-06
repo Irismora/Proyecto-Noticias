@@ -16,8 +16,6 @@ const useNews = (id) => {
           ? await getAllNewsTokenService(token)
           : await getAllNewsService();
 
-        
-
         setNews(data);
       } catch (error) {
         setError(error.message);
@@ -33,51 +31,60 @@ const useNews = (id) => {
   };
 
   const removeNoticia = async (id) => {
-    try{
+    try {
       setNews(news.filter((news) => news.id !== id));
-    }catch (error){
-        setError(error.message);
-  }
-};
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
-  const addLike = (id) => {
+  const addLike = (id, { likes, unlikes, liked }) => {
     const index = news.findIndex((newObject) => newObject.id === id);
-    news[index].likes++;
-    news[index].loggedUserLiked = true;
+    news[index].likes = likes;
+    news[index].loggedUserLiked = liked;
+    news[index].dislikes = unlikes;
     if (news[index].loggedUserDisliked) {
-      news[index].dislikes--;
       news[index].loggedUserDisliked = false;
     }
     setNews([...news]);
   };
 
-  const addDislike = (id) => {
+  const addDislike = (id, { likes, unlikes, unliked }) => {
     const index = news.findIndex((newObject) => newObject.id === id);
-    news[index].dislikes++;
-    news[index].loggedUserDisliked = true;
+    news[index].dislikes = unlikes;
+    news[index].loggedUserDisliked = unliked;
+    news[index].likes = likes;
     if (news[index].loggedUserLiked) {
-      news[index].likes--;
       news[index].loggedUserLiked = false;
     }
     setNews([...news]);
   };
 
-  const removeLike = (id) => {
+  /*const removeLike = (id) => {
     const index = news.findIndex((newObject) => newObject.id === id);
     news[index].likes--;
     news[index].loggedUserLiked = false;
     setNews([...news]);
-  };
+  };*/
 
-  const removeDislike = (id) => {
+  /*const removeDislike = (id) => {
     const index = news.findIndex((newObject) => newObject.id === id);
     news[index].dislikes--;
     news[index].loggedUserDisliked = false;
     setNews([...news]);
-  };
+  };*/
 
-  return {news, loading, error, addNew, removeNoticia, addLike, addDislike, removeLike, removeDislike};
+  return {
+    news,
+    loading,
+    error,
+    addNew,
+    removeNoticia,
+    addLike,
+    addDislike,
+    //removeLike,
+    //removeDislike,
+  };
 };
 
 export default useNews;
-

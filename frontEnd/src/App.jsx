@@ -22,10 +22,9 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/editNew" element={<EditNewPage />} />
+        <Route path="/editNew/:id" element={<EditNewPage />} />
         <Route path="/news/:id" element={<NoticiaId />} />
         <Route path="/profile" element={<UserPage />} />
-        
 
         <Route path="*" element={<NotFound />} />
       </Routes>

@@ -3,8 +3,10 @@ import { AuthContext } from "../context/AuthContext";
 import { editNewService } from "../service";
 import useNew from "../hooks/useNew";
 import useNews from "../hooks/useNews";
+import { useParams } from "react-router-dom";
 
 export const EditNewPage = () => {
+  const { id } = useParams();
   const { token } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [title, setTitle] = useState("");
@@ -14,14 +16,18 @@ export const EditNewPage = () => {
   const [topic, setTopic] = useState("");
   const [message, setMessage] = useState("");
   const [idNew, setIdNew] = useState("");
-  const {news} = useNew();
+  const { news } = useNew(id);
 
   const handleForm = async (e) => {
     e.preventDefault();
+    const data = new FormData(e.target);
 
     try {
-      await editNewService({ idNew, token, title, summery, newsText, topic });
-      setMessage(`Se ha editado correctamente la noticia con id ${idNews}`); /* NO SE SI VA MEJOR EL ID  */
+      console.log(id, token, data);
+      await editNewService({ id, token, data });
+      setMessage(
+        `Se ha editado correctamente la noticia con id ${id}`
+      ); /* NO SE SI VA MEJOR EL ID  */
     } catch (error) {
       setError(error.message);
       setMessage("");
@@ -31,7 +37,7 @@ export const EditNewPage = () => {
     <section>
       <form className="edit-news" onSubmit={handleForm}>
         <fieldset>
-          <label htmlFor="datosNew">Datos para introducir en la Noticia:</label> 
+          <label htmlFor="datosNew">Datos para introducir en la Noticia:</label>
           <label htmlFor="title">titulo</label>
           <input
             type="text"

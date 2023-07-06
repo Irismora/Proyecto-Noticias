@@ -7,7 +7,8 @@ import { NoticiaList } from "../components/NoticiaList";
 import { EditNewPage } from "./EditNewPage";
 
 const HomePage = () => {
-  const { news, loading, error, addNew, removeNoticia } = useNews();
+  const { news, loading, error, addNew, removeNoticia, addLike, addDislike } =
+    useNews();
   const { user } = useContext(AuthContext);
   if (loading) return <p>cargando noticias....</p>;
   if (error) return <ErrorMessage message={error} />;
@@ -20,6 +21,8 @@ const HomePage = () => {
         news={news}
         removeNoticia={removeNoticia}
         EditNewPage={EditNewPage}
+        addLike={addLike}
+        addDislike={addDislike}
       />
     </section>
   );

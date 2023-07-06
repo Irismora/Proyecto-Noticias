@@ -9,6 +9,7 @@ const editNews = async (req, res, next) => {
     connection = await getDB();
     // Recuperamos el id del usuario logueado
     //const idUserAuth = req.userAuth.id;
+    console.log("body", req.body);
 
     // Validamos los datos que recuperamos en el cuerpo de la petición con el schema de newsSchema
     await validateSchema(newsSchema, req.body);
@@ -21,7 +22,6 @@ const editNews = async (req, res, next) => {
 
     // Destructuramos el req.body
     const { title, summery, newsText, topic } = req.body;
-
     // Seleccionamos los datos antiguos
     const [news] = await connection.query(
       `

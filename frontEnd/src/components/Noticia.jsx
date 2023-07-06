@@ -1,10 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
-import {
-  deleteNoticiaService,
-  disLikeService,
-  likeService,
-} from "../service";
+import { deleteNoticiaService, disLikeService, likeService } from "../service";
 import { AuthContext } from "../context/AuthContext";
 import useNew from "../hooks/useNew";
 
@@ -20,8 +16,6 @@ export const News = ({
   const { token, user, idUser } = useContext(AuthContext);
   const [error, setError] = useState("");
 
-   
-
   const deleteNoticia = async (id) => {
     try {
       await deleteNoticiaService({ id, token });
@@ -35,13 +29,12 @@ export const News = ({
     }
   };
   const like = async (id) => {
+    console.log(news);
     try {
-      const { liked } = await likeService({ id, token });
-      if (liked) {
-        addLike(id);
-        return;
-      }
-      removeLike(id);
+      const res = await likeService({ id, token });
+
+      addLike(id, res);
+      return;
     } catch (error) {
       setError(error.message);
     }
@@ -49,13 +42,10 @@ export const News = ({
 
   const disLike = async (id) => {
     try {
-      const { unliked } = await disLikeService({ id, token });
+      const res = await disLikeService({ id, token });
 
-      if (unliked) {
-        addDislike(id);
-        return;
-      }
-      removeDislike(id);
+      addDislike(id, res);
+      return;
     } catch (error) {
       setError(error.message);
     }
@@ -87,12 +77,7 @@ export const News = ({
           <p>Usuario: {news.idUser}</p>
           <p>Likes: {news.likes}</p>
           <p>Dislikes: {news.dislikes}</p>
-          <p>
-            By{" "}
-            <Link to={`/profile`}>
-              {user && user.id === news.idUser ? user.username : null}
-            </Link>
-          </p>
+          <p>By {news.username}</p>
           <section>
             {token && news.idUser !== id ? (
               <span className="likebutton">
@@ -114,37 +99,36 @@ export const News = ({
                 </button>
               </span>
             ) : null}
-             {token && news.idUser !== id && error ? (
-    <p className="error-message">{error}</p>
-  ) : null}
+            {token && news.idUser !== id && error ? (
+              <p className="error-message">{error}</p>
+            ) : null}
           </section>
-         {user && user.id === news.idUser ? (
-  <section>
-    <button
-      className="DelButton"
-      onClick={() => {
-        if (window.confirm("Are you sure?")) deleteNoticia(news.id);
-      }}
-    >
-      Delete Noticia
-    </button>
-    
-  </section>
-) : null}
+          {user && user.id === news.idUser ? (
+            <section>
+              <button
+                className="DelButton"
+                onClick={() => {
+                  if (window.confirm("Are you sure?")) deleteNoticia(news.id);
+                }}
+              >
+                Delete Noticia
+              </button>
+            </section>
+          ) : null}
 
-{user && user.id === news.idUser ? (
-  <section>
-    <button className="EditButton"
-      onClick={() => {
-        // Redirige al usuario a la ruta de edición
-        window.location.href = "/editNew";
-      }}
-    >
-      Editar Noticia
-    </button>
-  </section>
-) : null}
-
+          {user && user.id === news.idUser ? (
+            <section>
+              <button
+                className="EditButton"
+                onClick={() => {
+                  // Redirige al usuario a la ruta de edición
+                  window.location.href = `/editNew/${news.id}`;
+                }}
+              >
+                Editar Noticia
+              </button>
+            </section>
+          ) : null}
         </article>
       </li>
     </ul>
