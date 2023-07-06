@@ -114,34 +114,37 @@ export const News = ({
                 </button>
               </span>
             ) : null}
+             {token && news.idUser !== id && error ? (
+    <p className="error-message">{error}</p>
+  ) : null}
           </section>
-          {user && user.id === news.idUser ? (
-            <section>
-              <button
-                className="DelButton"
-                onClick={() => {
-                  if (window.confirm("Are you sure?")) deleteNoticia(news.id);
-                }}
-              >
-                Delete Noticia
-              </button>
-              {error ? <p>{error}</p> : null}
-            </section>
-          ) : null}
+         {user && user.id === news.idUser ? (
+  <section>
+    <button
+      className="DelButton"
+      onClick={() => {
+        if (window.confirm("Are you sure?")) deleteNoticia(news.id);
+      }}
+    >
+      Delete Noticia
+    </button>
+    
+  </section>
+) : null}
 
-          {user && user.id === news.idUser ? (
-            <section>
-              <button className="EditButton"
-                onClick={() => {
-                  // Redirige al usuario a la ruta de edición
-                  window.location.href = "/editNew";
-                }}
-              >
-                Editar Noticia
-              </button>
-              {error ? <p>{error}</p> : null}
-            </section>
-          ) : null}
+{user && user.id === news.idUser ? (
+  <section>
+    <button className="EditButton"
+      onClick={() => {
+        // Redirige al usuario a la ruta de edición
+        window.location.href = "/editNew";
+      }}
+    >
+      Editar Noticia
+    </button>
+  </section>
+) : null}
+
         </article>
       </li>
     </ul>

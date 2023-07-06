@@ -15,7 +15,7 @@ const HomePage = () => {
   return (
     <section>
       {user ? <NewNew addNew={addNew} /> : null}
-      <h1>Ultimas Noticias</h1>
+      <h1 className="ultimasNoticias">Ultimas Noticias</h1>
       <NoticiaList
         news={news}
         removeNoticia={removeNoticia}
