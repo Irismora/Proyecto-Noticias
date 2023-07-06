@@ -27,8 +27,8 @@ const Registro = () => {
   };
   return (
     <section>
-      <h1> Regístrate aquí </h1>
-      <form onSubmit={handleForm}>
+      <h1 className="registrateAqui"> Regístrate aquí </h1>
+      <form className="registrarse" onSubmit={handleForm}>
         <fieldset>
           <label htmlFor="username">Nombre de usuario</label>
           <input

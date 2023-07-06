@@ -5,9 +5,9 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 
 import HomePage from "./pages/HomePage";
-import Registro from "./pages/Register";
+import Register from "./pages/Register";
 import Login from "./pages/Login";
-import NoticiasId from "./pages/NoticiaId";
+import NoticiaId from "./pages/NoticiaId";
 import NotFound from "./pages/NotFound";
 import UserPage from "./pages/UserPage";
 import EditNewPage from "./pages/EditNewPage";
@@ -20,10 +20,10 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/register" element={<Registro />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/editNew" element={<EditNewPage />} />
-        <Route path="/news/:id" element={<NoticiasId />} />
+        <Route path="/news/:id" element={<NoticiaId />} />
         <Route path="/profile" element={<UserPage />} />
         
 

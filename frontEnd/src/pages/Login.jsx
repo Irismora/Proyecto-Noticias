@@ -22,36 +22,40 @@ const Login = () => {
   };
 
   return (
-    <section>
-      <h1> Iniciar Sesión</h1>
-      <form onSubmit={handleForm}>
-        <fieldset>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            value={email}
-            required
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="pass">Contraseña</label>
-          <input
-            type="password"
-            name="pass"
-            id="pass"
-            value={password}
-            required
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </fieldset>
+    <>
+     {/* Agregamos la clase de estilo */}
+        <h1 className="iniciarSesion">Iniciar Sesión</h1>
+   
+      <section>
+        <form className="formularioLogin" onSubmit={handleForm}>
+          <fieldset>
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              name="email"
+              id="email"
+              value={email}
+              required
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </fieldset>
+          <fieldset>
+            <label htmlFor="pass">Contraseña</label>
+            <input
+              type="password"
+              name="pass"
+              id="pass"
+              value={password}
+              required
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </fieldset>
 
-        <button>Login</button>
-        {error ? <p>{error}</p> : null}
-      </form>
-    </section>
+          <button>Login</button>
+          {error ? <p>{error}</p> : null}
+        </form>
+      </section>
+    </>
   );
 };
 
