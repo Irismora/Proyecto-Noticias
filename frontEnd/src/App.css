@@ -6,27 +6,24 @@
 }
 
 body{
-    font-family: 'Roboto', sans-serif;
-      margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+   display: grid;
+     min-height: 100vh;
+  
 }
 
 ul{
-   /*  padding: 1rem; */
-        max-width: 600px;
+   
+    max-width: 600px;
     margin: auto;
 }
 
 
+
+
 header{
-
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 
@@ -35,25 +32,19 @@ header, footer {
   background-color: black;
   color: white;
   padding: 2rem;
+  grid-column: span 2;
+  
 }
 
-header {
-  flex-shrink: 0; 
-}
+
 
 footer {
-  margin-top: 100px; 
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 2rem;
+    
 }
-
-
-html {
-  --bg: #d9d9db;
-  --bright: #ffffff;
-/*   --action: #00acee;
-  --error: #c84d4d; */
-}
-
-
 
 
 a {
@@ -68,44 +59,24 @@ a {
 }
 
 
-.app footer {
-  background-color: black;
-  text-align: right;
-  color: #d9d9db;
-  padding: 2rem;
-   display: flex;
+main {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
 }
 
-main.app > section {
+main  > section {
   width: 100%;
   padding: 1rem;
   max-width: 800px;
   margin: 0 auto;
 }
 
-main.app > section.error {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
-main.app section.user-data {
-  background-color: var(--bg);
-  padding: 1rem;
-  margin-bottom: 2rem;
-}
-
-main.app > section.error p {
+main > section h1 {
   margin-bottom: 1rem;
 }
 
-main.app > section h1 {
-  margin-bottom: 1rem;
-}
-
-
- 
 
 article.news {
   display: flex;
@@ -205,8 +176,6 @@ ul.news-list li {
 }
  
 
-
-
 ul.news-list li p {
   font-family: 'Montserrat', sans-serif ;
 
@@ -215,12 +184,13 @@ ul.news-list li p {
 nav {
   display: grid;
   grid-template-columns: 1fr;
-  grid: block;
   text-align: center;
+  
 }
 
 nav ul {
-  margin: auto;
+    display: flex;
+    flex-direction: row-reverse
 }
 
 nav li {
@@ -229,10 +199,13 @@ nav li {
   padding: 0.5rem;
   border: 1px solid #000;
   border-radius: 1rem;
+  background-color: #4caf50;
+  margin: 5px;
 }
 
 nav h2 {
   height: 20%;
+  background-color: #f44336;
 }
 
 nav li:first-child {
@@ -323,16 +296,23 @@ button {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin: 3px;
 }
 
-button:hover {
+/* button:hover {
   background-color: #45a049;
-}
+} */
 
 
 .register , .login{
     color: white;
+   
+    
 }
+
+ 
+
+
 
 h1.iniciarSesion{
   font-size: 20px;
@@ -343,12 +323,18 @@ h1.iniciarSesion{
 }
 
 .formularioLogin{
-  
-    padding: 5rem;
+max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
 }
 
 .registrarse{
      padding: 5rem;
+     max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
 }
 
 
@@ -359,3 +345,26 @@ h1.registrateAqui{
     justify-content: center;
     height: 20px;
 }
+
+.edit-news{
+   max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f7f7f7;
+}
+
+.disliked {
+  background-color: #f44336; /* Color inicial del botón */
+
+}
+
+.disliked .clicked {
+  background-color: #9e9e9e; /* Color del botón cuando se le da clic */
+}
+
+
+ img {
+  width: 60%;
+  height: 70%;
+}
+
