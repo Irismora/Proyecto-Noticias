@@ -56,7 +56,6 @@ export const EditNewPage = () => {
             name="photo"
             id="photo"
             value={photo}
-            required
             accept={"image/*"}
             onChange={(e) => setPhoto(e.target.value)}
           />
