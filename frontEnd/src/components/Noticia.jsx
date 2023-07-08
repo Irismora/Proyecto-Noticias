@@ -71,13 +71,33 @@ export const News = ({
               "No hay foto"
             )}
           </section>
-          <p>Resumen: {news.summery}</p>
-          <p>Texto: {news.newsText}</p>
-          <p>Tema: {news.topic}</p>
-          <p>Usuario: {news.idUser}</p>
-          <p>Likes: {news.likes}</p>
-          <p>Dislikes: {news.dislikes}</p>
-          <p>By {news.username}</p>
+          <p> 
+          <span className="resumen">Resumen:</span> {news.summery}
+          </p>
+          <p>
+            <span className="texto">Texto:</span>
+            {news.newsText}
+            </p>
+          <p>
+           <span className="tema">Tema: </span> 
+             {news.topic}
+         </p>
+          <p>
+           <span className="usuario"> Usuario: </span>
+            {news.idUser}
+          </p>
+          <p>
+            <span className="likes">Likes: </span>
+            {news.likes}
+          </p>
+          <p>
+           <span className="dislike">Dislikes:</span> 
+            {news.dislikes}
+          </p>
+          <p>
+            <span className="by">By </span>
+            {news.username}
+          </p>
           <section>
             {token && news.idUser !== id ? (
               <span className="likebutton">
