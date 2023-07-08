@@ -13,7 +13,7 @@ const NoticiaId = () => {
 
   return (
     <section>
-      <h1>Noticia</h1>
+      <h1 className="noticiaEditada">Noticia Editada</h1>
       <News news={news} />
     </section>
   );
