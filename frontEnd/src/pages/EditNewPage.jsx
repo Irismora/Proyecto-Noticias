@@ -2,8 +2,8 @@ import { useEffect,useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import { editNewService } from "../service";
+import { addPhotoService } from "../service";
 import useNew from "../hooks/useNew";
-import useNews from "../hooks/useNews";
 import { useParams } from "react-router-dom";
 
 export const EditNewPage = () => {
@@ -12,7 +12,7 @@ export const EditNewPage = () => {
   const { token } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [title, setTitle] = useState("");
-  const [photo, setPhoto] = useState("");
+  const [photo, setPhoto] = useState(null);
   const [summery, setSummery] = useState("");
   const [newsText, setNewsText] = useState("");
   const [topic, setTopic] = useState("");
@@ -33,11 +33,13 @@ export const EditNewPage = () => {
     const data = new FormData(e.target);
 
     try {
-      console.log(id, token, data);
       await editNewService({ id, token, data });
-      setMessage(
-        `Se ha editado correctamente la noticia con id ${id}`
-      );
+
+      if (photo) {
+        await addPhotoService(id, data, token);
+      }
+
+      setMessage(`Se ha editado correctamente la noticia con id ${id}`);
       navigate(`/news/${id}`);
     } catch (error) {
       setError(error.message);
@@ -66,10 +68,18 @@ export const EditNewPage = () => {
             type="file"
             name="photo"
             id="photo"
-            value={photo}
             accept={"image/*"}
-            onChange={(e) => setPhoto(e.target.value)}
+            onChange={(e) => setPhoto(e.target.files[0])}
           />
+          {photo ? (
+            <figure>
+              <img
+                src={URL.createObjectURL(photo)}
+                style={{ width: "100px" }}
+                alt="Preview"
+              />
+            </figure>
+          ) : null}
         </fieldset>
 
         <fieldset>
