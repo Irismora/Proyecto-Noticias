@@ -199,6 +199,25 @@ export const disLikeService = async ({ id, token }) => {
   return json.data;
 };
 
+export const deleteUserService = async ({ password, token }) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}/user`, {
+    method: "DELETE",
+    body: JSON.stringify({ password }),
+    headers: {
+      Authorization: "Bearer " + token,
+      "Content-Type": "application/json",
+    },
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+};
+
 export const editNewService = async ({ id, data, token }) => {
   const response = await fetch(`${import.meta.env.VITE_BACKEND}/News/${id}`, {
     method: "PUT",
