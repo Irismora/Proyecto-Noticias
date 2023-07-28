@@ -60,6 +60,9 @@ export const News = ({
           <p>
             <Link to={`/news/${news.id}`}>Título: {news.title}</Link>
           </p>
+          <p>
+            Fecha de publicación: {new Date(news.created_at).toLocaleString()}
+          </p>
           <section className="photoNew">
             {news.photo ? (
               <img
@@ -71,19 +74,19 @@ export const News = ({
               "No hay foto"
             )}
           </section>
-          <p> 
-          <span className="resumen">Resumen:</span> {news.summery}
+          <p>
+            <span className="resumen">Resumen:</span> {news.summery}
           </p>
           <p>
             <span className="texto">Texto:</span>
             {news.newsText}
-            </p>
+          </p>
           <p>
-           <span className="tema">Tema: </span> 
-             {news.topic}
-         </p>
+            <span className="tema">Tema: </span>
+            {news.topic}
+          </p>
           <p>
-           <span className="usuario"> Usuario: </span>
+            <span className="usuario"> Usuario: </span>
             {news.idUser}
           </p>
           <p>
@@ -91,7 +94,7 @@ export const News = ({
             {news.likes}
           </p>
           <p>
-           <span className="dislike">Dislikes:</span> 
+            <span className="dislike">Dislikes:</span>
             {news.dislikes}
           </p>
           <p>
