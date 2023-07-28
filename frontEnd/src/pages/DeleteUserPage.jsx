@@ -27,7 +27,7 @@ export const DeleteUserPage = () => {
   };
 
   return (
-    <section>
+    <section className="deleteUser">
       <h1>Delete User:</h1>
       <form onSubmit={handleForm}>
         <fieldset>

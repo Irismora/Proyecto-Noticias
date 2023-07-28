@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { logInUserService } from "../service";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link} from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 const Login = () => {
@@ -53,6 +53,10 @@ const Login = () => {
 
           <button>Login</button>
           {error ? <p>{error}</p> : null}
+           <p className="contraseña">
+            ¿Has olvidado la contraseña?{" "}
+            <Link to="/user/password">Recuperar contraseña</Link>
+          </p>
         </form>
       </section>
     </>

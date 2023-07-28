@@ -235,3 +235,56 @@ export const editNewService = async ({ id, data, token }) => {
 
   return json.data;
 };
+
+
+export const editPasswordService = async ({
+  email,
+  newPass,
+  confirmNewPass,
+  token,
+}) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_BACKEND}/user/password`,
+    {
+      method: "PUT",
+      body: JSON.stringify({ email, newPass, confirmNewPass }),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer" + token,
+      },
+    }
+  );
+
+
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+};  
+
+
+
+export const editUserEmailUserNameService = async ({
+  newEmail,
+  newUsername,
+  token,
+}) => {
+  const response = await fetch(`${import.meta.env.VITE_BACKEND}/user/email`, {
+    method: "PUT",
+    body: JSON.stringify({ newEmail, newUsername }),
+    headers: {
+      Authorization: token,
+      "Content-Type": "application/json",
+    },
+  });
+
+  const json = await response.json();
+
+  if (!response.ok) {
+    throw new Error(json.message);
+  }
+
+  return json.data;
+}; 

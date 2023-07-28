@@ -26,7 +26,7 @@ const Registro = () => {
     }
   };
   return (
-    <section>
+    <section className="registrarses">
       <h1 className="registrateAqui"> Regístrate aquí </h1>
       <form className="registrarse" onSubmit={handleForm}>
         <fieldset>

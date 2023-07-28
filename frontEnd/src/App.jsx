@@ -12,6 +12,8 @@ import NotFound from "./pages/NotFound";
 import UserPage from "./pages/UserPage";
 import EditNewPage from "./pages/EditNewPage";
 import { DeleteUserPage } from "./pages/DeleteUserPage";
+import { EditEmailUserNameUserPage } from "./pages/EditEmailUserNameUserPage";
+import { EditPasswordPage } from "./pages/EditPasswordPage";
 
 //el tiene aqui importado tweetpage que es lo que representa nuestra Userpage pero nosotros no la tenemos!!!
 
@@ -29,6 +31,13 @@ function App() {
         <Route path="/delUser" element={<DeleteUserPage />} />
 
         <Route path="*" element={<NotFound />} />
+
+         <Route path="/user/email" element={<EditEmailUserNameUserPage />} />
+        <Route path="/user/password" element={<EditPasswordPage />} />
+        
+      
+      
+
       </Routes>
 
       <Footer />

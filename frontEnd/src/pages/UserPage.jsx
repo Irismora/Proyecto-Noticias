@@ -17,7 +17,33 @@ const UserPage = () => {
   if (!user) return null;
 
   return (
-    <section>
+
+    <>
+      <section className="userName"> 
+        <h1 className="usuario">Usuario {user?.username}</h1>
+        <p>
+          <span className="userioId">ID de Usuario: </span> {user?.id}
+        </p>
+        <p>
+         <span className="userioId"></span> Correo electrónico: {user?.email}
+          </p>
+
+        <p className="correo">
+          ¿Deseas cambiar el correo electrónico?{" "}
+          <Link to="/user/email">Recuperar correo </Link>
+        </p> 
+
+        <p className="deleteUsers">
+            ¿Deseas eliminar tu usuario?{" "}
+           <Link to={"/delUser"}>Delete User</Link>
+        </p>
+      </section>
+    
+      {/* El componente UserNews ahora está fuera de la sección */}
+      <UserNews id={user?.id} />
+    </>
+
+   /*  <section>
       <h1>User {user.username}</h1>
       <section className="user-data">
         <p>User id: {user.id}</p>
@@ -25,7 +51,7 @@ const UserPage = () => {
         <Link to={"/delUser"}>Delete User</Link>
       </section>
       <UserNews id={user.id} />
-    </section>
+    </section> */
   );
 };
 export default UserPage;

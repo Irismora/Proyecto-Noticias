@@ -16,6 +16,7 @@ body{
 ul{
   max-width: 600px;
   margin: auto;
+  padding: 20px;
 }
 
 
@@ -30,7 +31,7 @@ header{
 header, footer {
   background-color: black;
   color: white;
-  padding: 2rem;
+  padding: 1.5rem;
   
 }
 
@@ -57,19 +58,29 @@ a {
   text-align: center;
 }
 
+.deleteUser{
+  max-width: 500px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+}
 
 main {
   display: flex;
   gap: 1rem;
   flex-direction: column;
-}
 
+}
+/*  */
 main  > section {
   width: 100%;
-  padding: 1rem;
   max-width: 800px;
   margin: 0 auto;
+  padding: 30px;
 }
+/*  */
+
+
 
 
 main > section h1 {
@@ -83,7 +94,7 @@ article.news {
   gap: 1rem;
   background-color:  rgb(248, 236, 238);
   color:  black;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 
@@ -173,6 +184,7 @@ li {
 }
 
 .ultimasNoticias{
+  margin: 5px;
     display: flex;
     justify-content: space-around;
     padding: 2rem;
@@ -246,11 +258,15 @@ h1.iniciarSesion{
     background-color: #f7f7f7;
 }
 
+.registrarses{
+  padding: 10px;
+}
+
 .registrarse{
-     padding: 5rem;
-     max-width: 400px;
+   
+    max-width: 400px;
     margin: 0 auto;
-    padding: 20px;
+    padding: 10px;
     background-color: #f7f7f7;
 }
 
@@ -285,11 +301,14 @@ h1.registrateAqui{
   height: 70%;
 }
 
+/*  */
 .noticiaEditada{
   display: flex;
  justify-content: space-around;
  color: dimgray;
+ margin: 10px;
 }
+/*  */
 
 .resumen, .texto, .tema, .usuario, .likes, .dislike, .by{
    
@@ -304,3 +323,133 @@ h1.registrateAqui{
   color: #000;
   font-weight: bold;
 }
+
+
+.contraseña{
+  margin: 10px;
+}
+
+.userName{
+   max-width: 500px;
+    margin: 10px auto;
+    padding: 20px;
+   background-color: #f7f7f7;  
+}
+
+
+
+.cambiarContrasena, .editEmail{
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+}
+
+h1.contraseña, .h1EditEmail {
+    font-size: 20px;
+    display: flex;
+    padding: 3rem;
+    justify-content: center;
+    height: 20px;
+}
+
+
+h1.contraseña{
+  padding: 0rem;
+}
+.password{
+margin: 10px ;
+height: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .user-data, .userName{
+  margin: 20px;
+      max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+}
+
+header, footer {
+  
+    padding: 1rem;
+}
+
+.deleteUser{
+  max-width: 400px;
+
+}
+
+
+  /* Estilos específicos para móviles */
+}
+
+
+@media screen and (max-width: 375px){
+  .loggedIn, .logout, .profile{
+   /*  display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: flex-end; */
+    margin: 0px;
+}
+
+ .loggedIn, .logout{
+   margin: 10px;
+
+ }
+
+ .userName {
+    max-width: 300px;
+    margin: 10px auto;
+    padding: 20px;
+   
+}
+
+.registrarse {
+    max-width: 350px;
+    margin: 0 auto;
+    padding: 5px;
+    
+}
+
+h1.registrateAqui {
+    font-size: 17px;
+    padding: 0rem;
+    height: 10px;
+}
+
+.formularioLogin {
+    max-width: 350px;
+    padding: 20px;
+   
+}
+
+form.new-news {
+    max-width: 350px;
+
+}
+
+.ultimasNoticias {
+    padding: 2.6rem;
+     
+    
+}
+
+ul {
+  margin: 10px;
+  padding: 10px;
+
+}
+
+.editEmail {
+    max-width: 300px;
+}
+
+.deleteUser{
+  max-width: 350px;
+
+}
+}
+
