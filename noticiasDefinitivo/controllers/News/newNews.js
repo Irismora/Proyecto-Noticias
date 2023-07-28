@@ -60,6 +60,7 @@ const newNews = async (req, res, next) => {
         loggedUserLiked: 0,
         username: user[0].username,
         email: user[0].email,
+        created_at: created_at,
       },
     });
   } catch (error) {
