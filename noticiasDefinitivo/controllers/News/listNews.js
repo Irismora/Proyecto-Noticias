@@ -32,7 +32,7 @@ if (topic) {
   sqlQuery += " WHERE topic = ?";
 }
 
-sqlQuery += " GROUP BY n.id ORDER BY n.id DESC";
+sqlQuery += " GROUP BY n.id ORDER BY n.created_at DESC";
 
 
 

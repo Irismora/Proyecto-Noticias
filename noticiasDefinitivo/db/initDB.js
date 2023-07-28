@@ -46,6 +46,7 @@ async function main() {
                 newsText VARCHAR(255) NOT NULL,
                 topic VARCHAR(100) NOT NULL,
                 idUser INT UNSIGNED NOT NULL,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
                 FOREIGN KEY (idUser) REFERENCES user(id)
                 ON DELETE CASCADE
                 
