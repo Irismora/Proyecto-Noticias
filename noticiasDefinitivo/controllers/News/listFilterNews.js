@@ -24,7 +24,7 @@ const listFilterUserNews = async (req, res, next) => {
                     LEFT JOIN user_like_news l ON n.id = l.idNews 
                     LEFT JOIN user_unlike_news u ON n.id = u.idNews
                     LEFT JOIN user ON n.idUser = user.id
-                    GROUP BY n.id ORDER BY n.id DESC`;
+                    GROUP BY n.id ORDER BY n.created_at DESC`;
 
     // Recuperamos los datos de las noticias guardadas en la base de datos
     const [news] = await connection.query(sqlQuery);
