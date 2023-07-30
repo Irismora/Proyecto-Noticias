@@ -58,7 +58,9 @@ export const News = ({
       <li>
         <article className="news" id={news.id}>
           <p>
-            <Link to={`/news/${news.id}`}>Título: {news.title}</Link>
+            <Link to={`/news/${news.id}`}>
+              <u>Título:</u> {news.title}
+            </Link>
           </p>
           <p>
             Fecha de publicación: {new Date(news.created_at).toLocaleString()}
