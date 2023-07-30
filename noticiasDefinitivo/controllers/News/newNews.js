@@ -25,6 +25,9 @@ const newNews = async (req, res, next) => {
     // Destructuramos los datos de la noticia del cuerpo de la petición
     const { title, summery, newsText, topic } = req.body;
 
+    const now = new Date();
+    const created_at = now.toLocaleString();
+
     // Insertamos los datos de la noticia en la base de datos
     const [data] = await connection.query(
       `
